@@ -7,17 +7,17 @@ Statična stranica (Eleventy), bez WordPressa. Sadržaj se uređuje kroz **Pages
 ## Uređivanje sadržaja (za ZOI)
 
 1. Otvori **https://app.pagescms.org** i prijavi se (GitHub račun ili e-mail pozivnica).
-2. Izaberi `zoi84` i u meniju lijevo: **Novosti**, **Natječaji**, **Dokumenti** ili **Kapitalna ulaganja**.
+2. Izaberi `zoi84` i u meniju lijevo: **Novosti**, **Konkursi**, **Dokumenti** ili **Kapitalna ulaganja**.
 3. Dodaj ili izmijeni stavku, priloži PDF i klikni **Save**. Stranica se sama ponovo izgradi za minutu-dvije.
 
-Natječaji se sami prebacuju u „Zatvorene“ kad prođe rok za prijave.
+Konkursi se sami prebacuju u „Zatvorene“ kad prođe rok za prijave.
 
 ## Struktura
 
 | Putanja | Šta je |
 |---|---|
 | `src/novosti/*.md` | novosti, oglasi, nabavke, akti (naslovna + stranica Novosti) |
-| `src/natjecaji/*.md` | natječaji i javni pozivi |
+| `src/natjecaji/*.md` | konkursi i javni pozivi |
 | `src/dokumenti/*.md` | dokumenti; kategorije su u `src/_data/kategorije.json` |
 | `src/_data/ulaganja.json` | kapitalna ulaganja na stranici O nama (BS + EN) |
 | `src/uploads/` | fajlovi koji se uploadaju kroz CMS |

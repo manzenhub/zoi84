@@ -48,7 +48,7 @@ export default function (cfg) {
   cfg.addFilter("newsCards", (items) => newest(items).map((i) =>
     `    <a class="nc" href="#" data-k="${esc(i.data.vrsta)}" data-p="${esc(paras(i).join("||"))}" data-docs="${esc(docAttr(i.data.dokumenti))}"><div><div class="meta"><span>${esc((vrste.novosti[i.data.vrsta] || "").toUpperCase())}</span>${bsDate(i.date)}</div><h3>${esc(i.data.title)}</h3></div><div class="bt"><span class="more">Pročitaj više ${AR}</span></div></a>\n`).join(""));
 
-  // --- natječaji ---
+  // --- konkursi ---
   cfg.addFilter("natCards", (items) => newest(items).map((i) => {
     const d = i.data, rok = isoDay(d.rok);
     const dl = (d.dokumenti || []).filter((x) => x && x.naziv).map((x) => `<a href="${esc(fileUrl(x.fajl))}" data-dl${x.fajl ? ' target="_blank" rel="noopener"' : ""}><span>${esc(x.naziv)}</span><em>${esc(extOf(x.fajl, x.tip))}</em>${DL}</a>`).join("");

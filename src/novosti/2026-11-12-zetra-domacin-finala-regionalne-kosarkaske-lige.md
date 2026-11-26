@@ -8,4 +8,4 @@ Olimpijska dvorana Zetra ugostit će finalnu seriju regionalne košarkaške lige
 
 Kao javno preduzeće u vlasništvu Kantona Sarajevo, radimo transparentno. Akti, izvještaji o radu, finansijski izvještaji i javne nabavke dostupni su svima u sekciji Dokumenti.
 
-Ukoliko želite primati obavijesti o novim oglasima, natječajima i događajima, pratite ovu stranicu ili nas kontaktirajte kako bismo vas uvrstili na listu za obavještavanje.
+Ukoliko želite primati obavijesti o novim oglasima, konkursima i događajima, pratite ovu stranicu ili nas kontaktirajte kako bismo vas uvrstili na listu za obavještavanje.

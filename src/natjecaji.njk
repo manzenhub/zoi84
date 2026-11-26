@@ -7,7 +7,7 @@ permalink: natjecaji.html
 <meta charset="utf-8">
 <script>document.documentElement.style.background='#FF5F25'</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Natječaji – ZOI'84</title>
+<title>Konkursi – ZOI'84</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -276,7 +276,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 .ptop .lead{margin:0;max-width:calc(560*var(--u));font-size:16px;line-height:1.7;color:var(--gr)}
 @media(max-width:900px){.ptop{padding:110px 20px 0}.ptop .over{margin-bottom:14px}.ptop .h{font-size:clamp(52px,14vw,96px)}.ptop .bar{flex-direction:column;align-items:flex-start;gap:20px}.ptop .lead{max-width:none}}
 
-/* ================= NATJEČAJI ================= */
+/* ================= KONKURSI ================= */
 .ptop{background:var(--bg2);padding-bottom:calc(90*var(--u))}
 @media(max-width:900px){.ptop{padding-bottom:36px}}
 .ntw{background:var(--bg2);padding:calc(20*var(--u)) calc(128*var(--u) + var(--sx)) calc(150*var(--u))}
@@ -346,7 +346,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
     <li><a href="nasljedje.html">Naslijeđe '84</a></li>
     <li><a href="novosti.html">Novosti</a></li>
     <li><a href="dokumenti.html">Dokumenti</a></li>
-    <li><a href="#top" class="on" aria-current="page">Natječaji</a></li>
+    <li><a href="#top" class="on" aria-current="page">Konkursi</a></li>
   </ul>
   </div>
   <aside><b>KONTAKT</b>033 212 035<br>marketing@zoi84.ba<b>ADRESA</b>Alipašina b.b.<br>71 000 Sarajevo, BiH</aside>
@@ -354,9 +354,9 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 <div class="page" id="top">
 
 <section class="ptop">
-  <p class="over">Natječaji</p>
+  <p class="over">Konkursi</p>
   <div class="bar">
-    <h1 class="h">Natječaji i<br>javni pozivi</h1>
+    <h1 class="h">Konkursi i<br>javni pozivi</h1>
     <p class="lead">Ovdje objavljujemo oglase za zapošljavanje, javne pozive i oglase za zakup prostora, zajedno sa svom pratećom dokumentacijom i rezultatima.</p>
   </div>
 </section>
@@ -366,7 +366,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
     <div class="chips"><button type="button" data-f="all" class=on>Sve</button><button type="button" data-f="zap">Zapošljavanje</button><button type="button" data-f="poziv">Javni poziv</button><button type="button" data-f="zakup">Zakup prostora</button></div>
   </div>
   <div class="ntlist" id="ntlist">
-{% endraw %}{{ collections.natjecaji | natCards | safe }}{% raw %}    <p class="ntempty" hidden>Trenutno nema otvorenih natječaja u ovoj kategoriji. Pogledajte zatvorene natječaje ili nas pratite za nove objave.</p>
+{% endraw %}{{ collections.natjecaji | natCards | safe }}{% raw %}    <p class="ntempty" hidden>Trenutno nema otvorenih konkursa u ovoj kategoriji. Pogledajte zatvorene konkurse ili nas pratite za nove objave.</p>
   </div>
 </div>
 <section class="how">
@@ -392,7 +392,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <div class="fcols">
     <div class="flogo"><img src="img/logo-footer.svg" alt="ZOI'84 – OCS"></div>
     <div><h5>ZOI'84</h5><a href="o-nama.html">O nama</a><a href="nasljedje.html">Naslijeđe '84</a><a href="novosti.html">Novosti</a><a href="natjecaji.html">Karijere</a></div>
-    <div><h5>DOKUMENTI</h5><a href="dokumenti.html#nabavke">Javne nabavke</a><a href="natjecaji.html">Natječaji za posao</a><a href="dokumenti.html#izvjestaji">Izvještaji</a><a href="dokumenti.html#pristup">Pristup informacijama</a></div>
+    <div><h5>DOKUMENTI</h5><a href="dokumenti.html#nabavke">Javne nabavke</a><a href="natjecaji.html">Konkursi za posao</a><a href="dokumenti.html#izvjestaji">Izvještaji</a><a href="dokumenti.html#pristup">Pristup informacijama</a></div>
     <div><h5>PRATITE NAS</h5><div class="soc">
       <a href="https://www.facebook.com/zoi84ocs/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 8H17V4.2h-2.9C11.2 4.2 10 6 10 8.5V11H7.5v3.8H10V22h4v-7.2h2.8l.6-3.8H14V9c0-.6.3-1 .5-1z"/></svg></a>
       <a href="https://www.instagram.com/zoi84ocs/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
@@ -426,7 +426,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
     $('#cOpen').textContent=cards.filter(c=>c.dataset.s==='open').length;$('#cClosed').textContent=cards.filter(c=>c.dataset.s==='closed').length;
     let st='open',ty='all';
     const render=anim=>{let n=0;cards.forEach(c=>{const ok=c.dataset.s===st&&(ty==='all'||c.dataset.t===ty);c.hidden=!ok;c.classList.remove('show');if(ok&&anim){c.style.setProperty('--d',(n*60)+'ms');void c.offsetWidth;c.classList.add('show')}if(ok)n++});
-      empty.hidden=n>0;empty.textContent=st==='open'?'Trenutno nema otvorenih natječaja u ovoj kategoriji. Pogledajte zatvorene natječaje ili nas pratite za nove objave.':'Nema zatvorenih natječaja u ovoj kategoriji.'};
+      empty.hidden=n>0;empty.textContent=st==='open'?'Trenutno nema otvorenih konkursa u ovoj kategoriji. Pogledajte zatvorene konkurse ili nas pratite za nove objave.':'Nema zatvorenih konkursa u ovoj kategoriji.'};
     $$('.ntabs button').forEach(b=>b.addEventListener('click',()=>{st=b.dataset.s;$$('.ntabs button').forEach(x=>x.classList.toggle('on',x===b));render(true)}));
     $$('.ntw .chips button').forEach(b=>b.addEventListener('click',()=>{ty=b.dataset.f;$$('.ntw .chips button').forEach(x=>x.classList.toggle('on',x===b));render(true)}));
     render(false); window.PAGE.renderNt=()=>render(true);
