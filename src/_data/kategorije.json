@@ -1,0 +1,37 @@
+[
+  {
+    "id": "akti",
+    "naziv": "Statut i opći akti",
+    "opis": "Osnivački akti, pravilnici i poslovnici o radu preduzeća."
+  },
+  {
+    "id": "odluke",
+    "naziv": "Odluke i rješenja",
+    "opis": "Odluke organa upravljanja i rješenja o imenovanjima."
+  },
+  {
+    "id": "izvjestaji",
+    "naziv": "Izvještaji",
+    "opis": "Izvještaji o poslovanju, finansijski i revizorski izvještaji."
+  },
+  {
+    "id": "planovi",
+    "naziv": "Planovi i programi",
+    "opis": "Planovi poslovanja, ulaganja i javnih nabavki."
+  },
+  {
+    "id": "nabavke",
+    "naziv": "Javne nabavke",
+    "opis": "Obavještenja, odluke o izboru i poništenju postupaka nabavke."
+  },
+  {
+    "id": "cjenovnici",
+    "naziv": "Cjenovnici",
+    "opis": "Važeći cjenovnici usluga na Bjelašnici, Igmanu i u Zetri."
+  },
+  {
+    "id": "pristup",
+    "naziv": "Pristup informacijama",
+    "opis": "Dokumenti u skladu sa Zakonom o slobodi pristupa informacijama."
+  }
+]

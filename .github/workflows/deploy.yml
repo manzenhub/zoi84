@@ -1,0 +1,34 @@
+# Na svaki push na main: izgradi stranicu (Eleventy).
+# Kad ZOI dostavi FTP pristup hostingu, dodaj secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (i po potrebi FTP_DIR)
+# u Settings → Secrets and variables → Actions, i stranica se automatski šalje na server.
+name: Build i deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+      - name: Deploy na hosting (FTP)
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./_site/
+          server-dir: ${{ secrets.FTP_DIR || './' }}

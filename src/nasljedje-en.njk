@@ -1,0 +1,992 @@
+---
+permalink: nasljedje-en.html
+---
+{% raw %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.style.background='#FF5F25'</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heritage '84 – ZOI'84</title>
+<link rel="alternate" hreflang="bs" href="nasljedje.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sportski, samouvjeren, uredan – plakat Igara '84 danas.
+   IDEA: 1:1 prema Figma frameu "ZOI84 – Naslovna v2" (1920 px), skalirano po širini ekrana.
+   PICTURE: hero s dvije fotografije, 3D znak Igara na narandžastoj.
+   COLOUR and TYPE: #FF5C34, crna, #F3F3F3; Anton + Poppins.
+   LAYOUT: sve mjere iz Figme u jedinici --u (1/1920 širine). */
+:root{color-scheme:light;--or:#FF5C34;--or-d:#D8462A;--bk:#0B0B0B;--gr:#656565;--mg:#8C8C8C;--bg2:#F3F3F3;--card:#F2F2F0;
+--u:calc(min(100vw,1615px) / 1920);--sx:max(0px,calc((100vw - 1920 * var(--u)) / 2));--hf:'Anton',Impact,'Arial Narrow',sans-serif}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--bk);font:500 17px/1.6 'Poppins',system-ui,sans-serif;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.page{margin:0 auto}
+.h{font-family:var(--hf);font-weight:400;text-transform:uppercase;margin:0}
+.over{display:flex;align-items:center;gap:calc(16*var(--u));font:700 calc(15*var(--u))/calc(23*var(--u)) 'Poppins';letter-spacing:.08em;text-transform:uppercase;color:var(--mg);margin:0}
+.over::before{content:"";width:calc(40*var(--u));height:2px;background:var(--or);flex:none}
+.over.w{color:#fff}.over.w::before{background:#fff}
+.ar{width:calc(20*var(--u));height:calc(20*var(--u));min-width:16px;min-height:16px;flex:none;transition:transform .25s}
+.btn{display:inline-flex;align-items:center;gap:calc(16*var(--u));height:calc(62*var(--u));min-height:48px;padding:0 calc(24*var(--u)) 0 calc(32*var(--u));border-radius:40px;background:var(--or);color:#fff;font:600 calc(17*var(--u)) 'Poppins';border:0;cursor:pointer;white-space:nowrap;transition:background .25s}
+.btn:hover{background:var(--or-d)}.btn:hover .ar{transform:translateX(4px)}
+.btn.ol{background:transparent;border:3px solid #fff;height:calc(70*var(--u))}
+.btn.ol:hover{background:#fff;color:var(--or)}
+.circ{width:calc(64*var(--u));height:calc(64*var(--u));min-width:44px;min-height:44px;border-radius:50%;display:grid;place-items:center;background:var(--or);color:#fff;border:0;cursor:pointer;flex:none;transition:transform .25s,background .25s}
+.circ:hover{transform:scale(1.06);background:var(--or-d)}.circ.l .ar{transform:rotate(180deg)}
+:focus-visible{outline:3px solid var(--bk);outline-offset:3px}
+
+/* brand (fixed) */
+.brand{position:fixed;top:0;right:0;z-index:80;width:calc(123*var(--u));min-width:76px}
+.brand .logo{display:block;background:var(--or);height:calc(181*var(--u));min-height:112px;position:relative}
+.brand .logo img{position:absolute;left:17%;top:13.8%;width:66%}
+.mbtn{display:block;width:100%;height:calc(70*var(--u));min-height:52px;background:var(--or-d);border:0;color:#fff;cursor:pointer;position:relative;padding:0}
+.burger{position:absolute;left:50%;top:25.7%;width:40%;height:calc(15*var(--u));min-height:10px;transform:translateX(-50%)}
+.burger i{position:absolute;left:0;width:100%;height:2px;background:#fff;transition:transform .45s cubic-bezier(.7,0,.2,1),top .45s cubic-bezier(.7,0,.2,1)}
+.burger i:first-child{top:0}.burger i:last-child{top:calc(100% - 2px)}
+.open .burger i:first-child{top:calc(50% - 1px);transform:rotate(45deg) scaleX(.62)}
+.open .burger i:last-child{top:calc(50% - 1px);transform:rotate(-45deg) scaleX(.62)}
+.mlbl{position:absolute;left:0;right:0;top:58.6%;font:600 calc(13*var(--u))/1 'Poppins';font-size:max(9px,calc(13*var(--u)));letter-spacing:.12em;text-align:center}
+.mlbl span{transition:opacity .3s}.mlbl span+span{position:absolute;left:0;right:0;opacity:0}
+.open .mlbl span{opacity:0}.open .mlbl span+span{opacity:1}
+.nav{position:fixed;inset:0;z-index:70;background:var(--or);color:#fff;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;padding:clamp(100px,calc(150*var(--u)),150px) calc(260*var(--u) + var(--sx)) calc(80*var(--u)) calc(128*var(--u) + var(--sx));clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.7,0,.2,1);overflow:auto}
+.nav.open{clip-path:inset(0)}
+.nav ul{list-style:none;margin:0;padding:0}.nmain{align-self:start;padding-top:calc(40*var(--u))}
+.nlang{display:flex;gap:24px;height:16px;margin-bottom:30px;font:700 13px/16px 'Poppins';letter-spacing:.14em;text-transform:uppercase;opacity:0;transition:opacity .3s}
+.nav.open .nlang{opacity:1;transition:opacity .6s .3s}
+.nlang a{opacity:.5;transition:opacity .25s}.nlang a.on,.nlang a:hover{opacity:1}.nav li{overflow:hidden}
+.nav li a{display:inline-block;font-family:var(--hf);font-size:clamp(40px,min(5vw,8.2vh),96px);line-height:1.22;padding-top:.08em;text-transform:uppercase;transform:translateY(110%);opacity:0;transition:transform .25s ease-in,opacity .2s}
+.nav.open li a{transform:none;opacity:1;transition:transform .8s cubic-bezier(.19,1,.22,1),opacity .6s;transition-delay:calc(.35s + var(--n) * .12s)}
+.nav li:nth-child(1){--n:0}.nav li:nth-child(2){--n:1}.nav li:nth-child(3){--n:2}.nav li:nth-child(4){--n:3}.nav li:nth-child(5){--n:4}.nav li:nth-child(6){--n:5}.nav li:nth-child(7){--n:6}.nav li:nth-child(8){--n:7}
+.nav.open li a{opacity:.8}.nav.open li a.on{opacity:1}
+.nav.open ul a:hover{opacity:1;transition-delay:0s}
+.nav aside{font-size:16px;line-height:1.7;opacity:0;transition:opacity .3s}.nav.open aside{opacity:1;transition:opacity .6s 1.1s}
+.nav aside b{display:block;font-size:13px;letter-spacing:.1em;margin:26px 0 6px;opacity:.8}
+@media(min-width:901px){.nav aside{align-self:start;padding-top:calc(40*var(--u) + 46px + clamp(40px,min(5vw,8.2vh),96px) * .1)}.nav aside b:first-child{margin-top:0}}
+
+/* hero 1920x1080 */
+.hero{position:relative;height:calc(100vh - 70 * var(--u));height:calc(100svh - 70 * var(--u));min-height:460px;background:var(--bk);color:#fff;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease}.slide.on{opacity:1}
+.slide picture{display:block;width:100%;height:100%}.slide img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.06);transition:transform 8s ease-out}.slide.on img{transform:scale(1)}
+.hero .shade{position:absolute;inset:0;background:radial-gradient(ellipse 78% 125% at 0% 72%,rgba(245,90,51,1) 0%,rgba(245,90,51,.92) 26%,rgba(245,90,51,.55) 52%,rgba(245,90,51,0) 100%)}
+.lang{position:absolute;left:calc(128*var(--u) + var(--sx));top:calc(60*var(--u));z-index:3;font:600 calc(15*var(--u)) 'Poppins';font-size:max(12px,calc(15*var(--u)));letter-spacing:.04em}
+.hero .tx{position:absolute;z-index:2;left:calc(120*var(--u) + var(--sx));bottom:calc(95*var(--u))}
+.hero .over{font-weight:800;color:#fff;margin:0 0 calc(75*var(--u)) calc(23*var(--u))}
+.hero .h{font-size:min(calc(200*var(--u)),calc((100svh - 70*var(--u)) * .2));line-height:.9}
+@media(min-width:901px){.hero .over{margin-bottom:min(calc(75*var(--u)),calc((100svh - 70*var(--u)) * .06))}}
+@keyframes up{from{opacity:0;transform:translateY(50px)}}
+.cap{position:absolute;z-index:2;right:calc(128*var(--u));top:calc(919*var(--u));display:flex;align-items:center;gap:14px;font:500 calc(15*var(--u)) 'Poppins';font-size:max(12px,calc(15*var(--u)));color:rgba(255,255,255,.85);opacity:0;transition:opacity .8s}
+.cap.on{opacity:1}
+.cap i{display:block;height:2px;width:16px;background:rgba(255,255,255,.4)}.cap i.on{width:36px;background:#fff}
+
+/* ko smo mi 701 */
+.about{display:grid;grid-template-columns:calc(511*var(--u)) calc(1070*var(--u));padding:calc(160*var(--u)) 0 calc(143*var(--u)) calc(128*var(--u) + var(--sx))}
+.dj{display:grid;grid-template-columns:repeat(3,calc(317*var(--u)));gap:calc(40*var(--u));margin:0 0 calc(53*var(--u))}
+.dj>div{border-top:1.5px solid #D6D6D6;padding-top:calc(28*var(--u))}
+.dj .h{font-size:calc(64*var(--u));line-height:1;margin-bottom:calc(14*var(--u))}
+.dj p{margin:0;width:calc(300*var(--u));color:var(--gr);font-size:calc(19*var(--u));line-height:1.55}
+.about .over{margin-top:calc(16*var(--u))}
+.about .st{font-size:calc(44*var(--u));line-height:1.36;margin:0 0 calc(66*var(--u))}
+
+/* objekti 1633 */
+.centri{padding:calc(115*var(--u)) calc(128*var(--u) + var(--sx)) calc(187*var(--u))}
+.centri .head .over{margin-bottom:calc(61*var(--u))}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.head .over{margin-bottom:calc(21*var(--u))}
+.head .h{font-size:calc(150*var(--u));line-height:.92;margin-left:calc(-4*var(--u))}
+.head .lead{width:calc(540*var(--u));margin:0 0 calc(10*var(--u));color:var(--gr);font-size:calc(22*var(--u));line-height:1.65}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(32*var(--u));margin-top:calc(80*var(--u))}
+.gw{position:relative;height:calc(1000*var(--u));overflow:hidden;color:#fff;display:block;background:var(--bk)}
+.gw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gw:hover img{transform:scale(1.05)}
+.gw::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5) 75%,rgba(0,0,0,.85) 100%)}
+.gw .bt{position:absolute;z-index:2;left:calc(48*var(--u));bottom:calc(69*var(--u))}
+.gw .go{position:absolute;z-index:2;right:calc(51*var(--u));bottom:calc(50*var(--u));width:calc(114*var(--u));height:calc(114*var(--u))}
+.gw .go .ar{width:calc(30*var(--u));height:calc(30*var(--u))}
+.gw:hover .go{background:var(--or-d);transform:scale(1.06)}
+.gw .h{font-size:calc(120*var(--u));line-height:.92;margin:0 0 calc(20*var(--u)) calc(-2*var(--u))}
+.gw p{margin:0;width:calc(500*var(--u));font-size:calc(21*var(--u));line-height:1.6}
+
+/* sarajevo 1984 – 1120 */
+.games{position:relative;background:#FF5F25;color:#fff;height:calc(1120*var(--u));overflow:hidden}
+.games .tx{position:absolute;z-index:2;left:calc(117*var(--u) + var(--sx));top:calc(129*var(--u));width:calc(860*var(--u))}
+.games .h{font-size:calc(150*var(--u));line-height:.94;width:calc(846*var(--u));margin:calc(71*var(--u)) 0 0 calc(8*var(--u))}
+.games .tx2{position:absolute;z-index:2;left:calc(1197*var(--u) + var(--sx));top:calc(560*var(--u));width:calc(530*var(--u))}
+.games p{margin:0 0 calc(34*var(--u));font-size:calc(27*var(--u));line-height:1.65}
+.emb{position:absolute;inset:0;z-index:1;cursor:grab;touch-action:pan-y}.emb.drag{cursor:grabbing}.games .tx,.games .tx2{pointer-events:none}.games .tx2 a{pointer-events:auto}
+
+/* direktor 1135 */
+.dir{display:grid;grid-template-columns:calc(642*var(--u)) calc(812*var(--u));column-gap:calc(112*var(--u));padding:calc(142*var(--u)) 0 calc(170*var(--u)) calc(119*var(--u) + var(--sx));align-items:start}
+.dir .ph{margin-top:calc(21*var(--u));height:calc(802*var(--u));background:linear-gradient(160deg,#2c323d,#141820);position:relative;overflow:hidden;display:grid;place-items:center;color:#9aa1ad;font-size:15px}
+.dir .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dir .q{font-family:var(--hf);color:#FF6731;font-size:calc(300*var(--u));line-height:1;height:calc(163*var(--u));overflow:hidden}
+.dir blockquote{margin:0 0 calc(36*var(--u));font-size:calc(40*var(--u));line-height:1.4}
+.dir .nm{font-family:var(--hf);font-size:calc(72*var(--u));line-height:1.5;text-transform:uppercase}
+.dir small{display:block;color:var(--gr);font-size:calc(20*var(--u));margin:calc(6*var(--u)) 0 0 2px}
+
+/* novosti 1364 */
+.news{background:var(--bg2);padding:calc(123*var(--u)) 0 calc(145*var(--u))}
+.news .top{padding:0 calc(128*var(--u) + var(--sx))}
+.news .over{margin-bottom:calc(54*var(--u))}
+.news .h{font-size:calc(150*var(--u));line-height:.92;margin-left:calc(-4*var(--u))}
+.news .bar{display:flex;justify-content:space-between;align-items:flex-end;margin:0 0 calc(107*var(--u))}.news .ctl{margin-right:calc(8*var(--u))}
+.chips{display:flex;gap:calc(12*var(--u));flex-wrap:wrap}
+.chips button{height:calc(64*var(--u));min-height:44px;padding:0 calc(22*var(--u));border-radius:30px;border:1.5px solid #D6D6D6;background:transparent;color:var(--bk);font:600 calc(15*var(--u)) 'Poppins';font-size:max(13px,calc(15*var(--u)));cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chips button.on,.chips button:hover{background:var(--bk);color:#fff;border-color:var(--bk)}
+.ctl{display:flex;align-items:center;gap:calc(9*var(--u))}
+.ctl .btn{height:calc(64*var(--u));margin-right:calc(29*var(--u))}
+.track{display:flex;gap:calc(32*var(--u));overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 calc(128*var(--u) + var(--sx));scroll-padding-inline:calc(128*var(--u) + var(--sx));cursor:grab}.track.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}.track.drag .nc{pointer-events:none}
+.track::-webkit-scrollbar{display:none}
+.nc{flex:0 0 calc(420*var(--u));height:calc(580*var(--u));scroll-snap-align:start;background:#fff;padding:calc(36*var(--u));display:flex;flex-direction:column;justify-content:space-between;transition:transform .35s,box-shadow .35s}
+.nc:hover{transform:none}
+.nc[hidden]{display:none}.nc.alt{background:var(--card)}
+.nc .meta{display:flex;align-items:center;gap:calc(16*var(--u));font-size:calc(15*var(--u));color:var(--mg);margin-bottom:calc(36*var(--u))}
+.nc .meta span{background:#fff;color:var(--bk);border-radius:20px;padding:calc(7*var(--u)) calc(14*var(--u));font:700 calc(12*var(--u))/1.2 'Poppins';letter-spacing:.08em}
+.nc h3{margin:0;font-size:calc(34*var(--u));line-height:1.24;font-weight:600;letter-spacing:-.01em}
+.nc .bt{display:flex;align-items:flex-end;justify-content:space-between;min-height:calc(26*var(--u))}
+.nc .more{color:var(--gr);font-weight:600;font-size:calc(16*var(--u));display:flex;align-items:center;gap:8px}
+.nc .more .ar{width:calc(16*var(--u));height:calc(16*var(--u));min-width:12px;min-height:12px}
+.nc .circ{width:calc(72*var(--u));height:calc(72*var(--u))}
+.nc.hi{background:var(--or);color:#fff}.nc.hi .meta,.nc.hi .more{color:#fff}
+.nc.hi .meta span{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.nc.hi .circ{background:transparent;box-shadow:inset 0 0 0 2px #fff}
+
+/* footer 1201 */
+footer{background:var(--or);color:#fff;padding:calc(140*var(--u)) calc(128*var(--u) + var(--sx)) calc(44*var(--u))}
+.ftop{display:grid;grid-template-columns:calc(972*var(--u)) 1fr;height:calc(534*var(--u));border-bottom:1px solid rgba(255,255,255,.35)}
+footer .over{color:rgba(255,255,255,.85);margin-bottom:calc(21*var(--u))}
+.ftop .h{font-size:calc(104*var(--u));line-height:.94;margin:0 0 calc(32*var(--u)) calc(-4*var(--u))}
+.ftop p{margin:0 0 calc(40*var(--u));width:calc(600*var(--u));font-size:calc(21*var(--u));line-height:1.6;color:rgba(255,255,255,.85)}
+footer .btn.ol{height:calc(68*var(--u))}
+.clist{list-style:none;margin:calc(70*var(--u)) 0 0 calc(128*var(--u));padding:0;display:grid;gap:calc(22*var(--u));align-content:start;align-self:start}
+.clist li{display:flex;align-items:center;gap:calc(16*var(--u));font:600 calc(22*var(--u))/1.5 'Poppins'}
+.clist svg{width:calc(26*var(--u));height:calc(26*var(--u));min-width:18px;min-height:18px;flex:none}
+.fcols{display:grid;grid-template-columns:calc(852*var(--u)) calc(280*var(--u)) calc(288*var(--u)) 1fr;height:calc(432*var(--u));padding-top:calc(49*var(--u));border-bottom:1px solid rgba(255,255,255,.35)}
+.fcols .flogo img{width:calc(177*var(--u))}
+.fcols h5{font:700 calc(13*var(--u)) 'Poppins';font-size:max(11px,calc(13*var(--u)));letter-spacing:.1em;color:rgba(255,255,255,.85);margin:calc(23*var(--u)) 0 calc(34*var(--u))}
+.fcols a,.fcols p{display:block;margin:0 0 calc(14*var(--u));font-size:calc(17*var(--u));line-height:calc(26*var(--u))}
+.fcols a:hover{text-decoration:underline;text-underline-offset:4px}
+.soc{display:flex;gap:calc(12*var(--u));margin-top:calc(-14*var(--u))}
+.soc a{width:calc(52*var(--u));height:calc(52*var(--u));min-width:40px;min-height:40px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;margin:0;transition:background .25s,color .25s}
+.soc a:hover{background:#fff;color:var(--or);text-decoration:none}
+.soc svg{width:42%;height:42%}
+.fbot{display:flex;justify-content:space-between;gap:12px 30px;padding-top:calc(30*var(--u));font-size:calc(14*var(--u));color:rgba(255,255,255,.85)}
+.fbot nav{display:flex;gap:calc(26*var(--u))}
+
+/* scroll ikonica */
+.scrollhint{position:absolute;z-index:3;left:50%;bottom:calc(46*var(--u));transform:translate(-50%,14px);display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;font:700 11px/1 'Poppins';letter-spacing:.24em;text-transform:uppercase;opacity:0;transition:opacity 1s .9s,transform 1s .9s cubic-bezier(.19,1,.22,1)}
+.scrollhint span{padding-left:.24em}
+.scrollhint.in{opacity:.9;transform:translate(-50%,0)}.scrollhint:hover{opacity:1}
+.scrollhint svg{width:12px;height:20px;animation:sarrow 1.8s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes sarrow{0%{transform:translateY(-6px);opacity:0}25%{opacity:1}70%{transform:translateY(6px);opacity:1}100%{transform:translateY(8px);opacity:0}}
+/* intro */
+#intro{position:fixed;inset:0;z-index:200;background:var(--or);clip-path:inset(0 0 0 0);transition:clip-path 1.2s cubic-bezier(.77,0,.18,1)}
+#intro.go{clip-path:inset(0 0 100% 100%)}
+#intro img{position:absolute;left:50%;top:50%;width:min(130px,30vw);transform:translate(-50%,-50%);animation:introIn 1.1s ease both}
+@keyframes introIn{from{opacity:0}}
+#intro .bar{position:absolute;left:50%;top:calc(50% + min(130px,30vw)*.85);width:min(130px,30vw);height:2px;transform:translateX(-50%);background:rgba(255,255,255,.28);overflow:hidden;animation:introIn 1.1s ease both;transition:opacity .4s}
+#intro .bar b{display:block;height:100%;width:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .4s ease-out}
+#intro.go .bar{opacity:0}
+body.intro{overflow:hidden}
+.brand{transition:transform 1s cubic-bezier(.19,1,.22,1)}
+body.intro .brand,body.brandwait .brand{transform:translateY(-105%)}
+/* pojavljivanje elemenata */
+.ln{display:block;clip-path:inset(-.5em -.3em -.06em -.3em)}
+.ln>span{display:block;transform:translateY(125%) rotate(3deg);transform-origin:0 100%;opacity:0;filter:blur(3px);transition:transform 1.3s cubic-bezier(.19,1,.22,1),opacity 1.2s ease-out,filter 1.3s ease-out;transition-delay:calc(var(--i,0)*130ms + var(--d,0ms))}
+.in .ln>span,.ln.in>span{transform:none;opacity:1;filter:blur(0)}
+.fu{opacity:0;transform:translateY(70px);filter:blur(3px);transition:opacity 1.1s cubic-bezier(.19,1,.22,1),transform 1.3s cubic-bezier(.19,1,.22,1),filter 1.1s;transition-delay:var(--d,0ms)}
+.fu.in{opacity:1;transform:none;filter:blur(0)}
+.over.fx{opacity:0;transform:translateX(-24px);transition:opacity .9s,transform 1.1s cubic-bezier(.19,1,.22,1);transition-delay:var(--d,0ms)}
+.over.fx::before{transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.19,1,.22,1);transition-delay:calc(var(--d,0ms) + 150ms)}
+.over.fx.in{opacity:1;transform:none}.over.fx.in::before{transform:none}
+.im{clip-path:inset(0 100% 0 0);transition:clip-path .45s cubic-bezier(.77,0,.18,1);transition-delay:var(--d,0ms)}
+.im.in{clip-path:inset(0 0 0 0)}
+.im .cov{position:absolute;inset:0;z-index:6;background:var(--or);transform-origin:100% 50%;transition:transform .5s cubic-bezier(.77,0,.18,1);transition-delay:calc(var(--d,0ms) + 475ms);pointer-events:none}
+.im.in .cov{transform:scaleX(0)}
+.im img{transform:scale(1.25);transition:transform 1.2s cubic-bezier(.19,1,.22,1)!important;transition-delay:calc(var(--d,0ms) + 450ms)!important}
+.im.in img{transform:none}
+.im.done img{transition:transform .9s cubic-bezier(.2,.7,.2,1)!important;transition-delay:0ms!important}
+.gw.im.in:hover img{transform:scale(1.05)}
+.dj>div.fu{border-top-color:transparent;transition:opacity 1.1s,transform 1.3s cubic-bezier(.19,1,.22,1),filter 1.1s,border-color 1.2s;transition-delay:var(--d,0ms)}
+.dj>div.fu.in{border-top-color:#D6D6D6}
+.slide.on img{transition:transform 3s ease-out}
+body.intro .slide.on img{transform:scale(1.18)}
+/* novosti hover */
+.nc.fu.in{transition:opacity 1.1s,transform .45s cubic-bezier(.2,.7,.2,1),filter 1.1s,box-shadow .35s;transition-delay:var(--d,0ms)}
+.nc:hover{background:var(--or);color:#fff}
+.nc.in:hover{transform:none;box-shadow:none}
+.nc:hover .meta,.nc:hover .more{color:#fff}
+.nc,.nc .meta,.nc .more,.nc h3,.nc .ar{transition-property:opacity,transform,filter,box-shadow!important}
+
+/* tablet / mobile */
+@media(max-width:900px){
+:root{--u:calc(100vw / 760);--sx:0px}.scrollhint{left:20px;bottom:24px;flex-direction:row;gap:8px;font-size:10px;transform:translateY(10px)}.scrollhint.in{transform:none}.scrollhint svg{width:10px;height:16px}
+.brand{min-width:72px;width:72px}.brand .logo{min-height:104px;height:104px}.mbtn{min-height:50px;height:50px}.mlbl{top:62%;font-size:9px}.burger{top:24%;height:9px;min-height:9px}
+.hero{height:calc(100vh - 112px);height:calc(100svh - 112px);min-height:540px}.hero .tx{left:20px;right:20px;bottom:64px}.hero .over{margin:0 0 22px 4px;font-size:12px}.hero .h{font-size:clamp(64px,19vw,120px)}
+.lang{left:20px;top:24px;font-size:12px}.cap{top:auto;bottom:26px;left:20px;right:auto;font-size:12px}
+.over{font-size:12px;line-height:18px}
+.about{grid-template-columns:minmax(0,1fr);padding:64px 20px 72px}.about .over{margin:0 0 22px}.about .st{font-size:24px;line-height:1.4;margin-bottom:28px}
+.dj{grid-template-columns:minmax(0,1fr);gap:0;margin:8px 0 28px}.dj>div{padding:22px 0 24px}.dj .h{font-size:40px;margin-bottom:8px}.dj p{width:auto;font-size:15px}
+.centri{padding:72px 20px 72px}.head{flex-direction:column;align-items:flex-start;gap:16px}.head .over{margin-bottom:14px}.head .h,.news .h{font-size:clamp(52px,14vw,96px)}.head .lead{width:auto;font-size:16px;margin:0}
+.cards{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:36px}.gw{height:auto;aspect-ratio:4/5}.gw .bt{left:22px;right:96px;bottom:26px}.gw .h{font-size:clamp(48px,13vw,80px);margin-bottom:10px}.gw p{width:auto;font-size:14px}.gw .go{width:60px;height:60px;right:22px;bottom:26px}.gw .go .ar{width:20px;height:20px}
+.games{height:auto;padding:64px 20px 56px;display:flex;flex-direction:column}.games .tx,.games .tx2{position:relative;left:0;top:0;width:auto;margin-top:28px}.games .h{width:auto;margin:16px 0 0;font-size:clamp(52px,14vw,96px)}
+.emb{position:absolute;left:0;right:0;top:36px;bottom:auto;height:100vw}.games{padding-top:calc(36px + 54vw)!important}.games p{font-size:19px;line-height:1.55;margin-bottom:26px}.btn.ol{height:56px}
+.dir{grid-template-columns:minmax(0,1fr);padding:64px 20px 72px;row-gap:28px}.dir .ph{height:auto;aspect-ratio:642/802;margin:0}.dir .q{font-size:150px;height:82px}
+.dir blockquote{font-size:22px;margin-bottom:20px}.dir .nm{font-size:44px}.dir small{font-size:14px}
+.news{padding:64px 0 72px}.news .top{padding:0 20px}.news .over{margin-bottom:14px}.news .bar{flex-direction:column;align-items:flex-start;gap:24px;margin:0 0 28px}
+.chips{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 20px);padding-right:20px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chips button{flex:none;height:44px;font-size:14px}
+.ctl .circ{display:none}.ctl .btn{margin:0;height:50px;font-size:15px}
+.track{padding:0 20px;gap:12px;scroll-padding-inline:20px;scroll-snap-type:x mandatory}.nc{flex-basis:38vw;scroll-snap-align:start;height:auto;aspect-ratio:auto;min-height:290px;padding:14px}.nc .meta{font-size:11px;gap:6px 8px;margin-bottom:12px;flex-wrap:wrap}.nc .meta span{font-size:10px;padding:4px 8px}.nc h3{font-size:16.5px;line-height:1.28}.nc .more{font-size:13px;gap:6px}.nc .bt{min-height:0}
+footer{padding:64px 20px 28px}.ftop{grid-template-columns:minmax(0,1fr);height:auto;padding-bottom:44px}footer .over{margin-bottom:14px}.ftop .h{font-size:clamp(44px,12vw,80px);margin-bottom:18px}.ftop p{width:auto;font-size:16px;margin-bottom:26px}footer .btn.ol{height:54px}
+.clist{margin:40px 0 0;gap:16px}.clist li{font-size:17px}.clist svg{width:22px;height:22px}
+.fcols{grid-template-columns:repeat(2,minmax(0,1fr));height:auto;gap:8px 20px;padding:40px 0 36px}.fcols .flogo{grid-column:1/-1;margin-bottom:20px}.fcols .flogo img{width:96px}
+.fcols h5{font-size:11px;margin:16px 0 16px}.fcols a,.fcols p{font-size:15px;line-height:1.45;margin-bottom:10px}.soc{margin-top:0}
+.fbot{flex-direction:column;font-size:12px;padding-top:22px;gap:10px}.fbot nav{gap:14px}
+.nav{grid-template-columns:minmax(0,1fr);padding:110px 20px 36px}.nmain{align-self:end;padding-top:0}.nav aside{font-size:14px}
+.btn{font-size:15px;height:52px;padding:0 20px 0 24px}.about .btn{height:52px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.im .cov{display:none}.ln>span,.fu,.fx,.im,.im img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}#intro{display:none}}
+.lb{position:fixed;inset:0;z-index:300;background:rgba(10,10,10,.72);overflow-y:auto;overscroll-behavior:contain;padding:clamp(20px,7vh,90px) 20px;opacity:0;transition:opacity .35s}
+.lb.on{opacity:1}
+@keyframes navOut{to{opacity:0}}.nav.leave>*{animation:navOut .45s ease forwards}
+body.navleave .brand{animation:navOut .45s ease forwards}
+.lbp{position:relative;margin:0 auto;background:#fff;color:var(--bk);width:min(calc(900*var(--u)),100%);min-width:min(560px,100%);transform:translateY(24px);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.lbs{padding:calc(80*var(--u)) calc(80*var(--u)) calc(76*var(--u))}
+.lb.on .lbp{transform:none}
+.lbm{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--mg);margin-bottom:26px}
+.lbm span{background:var(--bg2);color:var(--bk);border-radius:20px;padding:6px 12px;font:700 12px/1.2 'Poppins';letter-spacing:.08em}
+.lbh{margin:0 0 24px;padding-right:60px;font:600 calc(48*var(--u))/1.18 'Poppins';font-size:max(24px,calc(48*var(--u)));letter-spacing:-.02em}
+.lbt p{margin:0 0 18px;font-size:16px;line-height:1.7;color:var(--gr)}.lbt p:last-child{margin:0}
+.lbd:empty{display:none}.lbd{margin-top:32px;padding-top:26px;border-top:1px solid #E4E4E4;display:flex;flex-wrap:wrap;gap:8px}
+.lbd h4{width:100%;margin:0 0 6px;font:700 12px 'Poppins';letter-spacing:.12em;text-transform:uppercase;color:var(--mg)}
+.lbd a{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:1.5px solid #D6D6D6;border-radius:30px;font:600 14px 'Poppins';color:var(--bk)}
+.lbd em{font-style:normal;font-size:11px;color:var(--mg)}.lbd .ar{width:15px;height:15px;color:var(--or)}
+.lbm .lbs-st{background:var(--bg2);color:var(--gr)}.lbm .lbs-st.on{background:var(--or);color:#fff}
+.lbx{position:absolute;z-index:2;top:22px;right:22px;width:52px;height:52px;border-radius:50%;border:0;background:transparent;box-shadow:inset 0 0 0 2px var(--bk);color:var(--bk);display:grid;place-items:center;cursor:pointer;transition:background .3s,color .3s}
+.lbx:hover{background:var(--bk);color:#fff}
+@media(max-width:900px){.lb{padding:14px}.lbs{padding:76px 22px 30px}.lbh{padding-right:0}.lbx{top:14px;right:14px;width:46px;height:46px;background:#fff}.lbx:hover{background:var(--bk)}}
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+
+/* ================= NASLIJEĐE ================= */
+.hero.nh{background:#FF5F25}
+.hero.nh .tx{z-index:3;pointer-events:none}
+.hero.nh .h{font-size:min(calc(200*var(--u)),calc((100svh - 70*var(--u)) * .19))}
+.nh .hemb{position:absolute;z-index:1;top:0;bottom:0;left:calc(640*var(--u) + var(--sx));right:calc(var(--sx) - 120*var(--u));cursor:grab;touch-action:pan-y}
+.nh .hemb.drag{cursor:grabbing}
+.sec{padding:calc(170*var(--u)) calc(128*var(--u) + var(--sx))}
+.pp{margin:0;color:var(--gr);font-size:calc(22*var(--u));line-height:1.65;max-width:calc(560*var(--u))}
+/* izjava */
+.stmt{padding:calc(200*var(--u)) calc(128*var(--u) + var(--sx)) calc(170*var(--u))}
+.stmt .over{margin-bottom:calc(60*var(--u))}
+.stmt .h{font-size:calc(124*var(--u));line-height:.98;white-space:nowrap}
+.stmt .h.i2{margin-left:calc(150*var(--u))}.stmt .h.i3{margin-left:calc(300*var(--u))}
+/* priče: foto + tekst */
+.story{padding:0 calc(128*var(--u) + var(--sx)) calc(120*var(--u))}
+.row{display:grid;grid-template-columns:calc(720*var(--u)) 1fr;column-gap:calc(130*var(--u));align-items:center;margin-bottom:calc(140*var(--u))}
+.row:last-child{margin-bottom:0}
+.row.rev{grid-template-columns:1fr calc(720*var(--u))}.row.rev .arch{order:2}.row.rev .rt{padding-left:calc(100*var(--u))}
+.rt .over{margin-bottom:calc(36*var(--u))}
+.rt .h{font-size:calc(96*var(--u));line-height:.95;margin-bottom:calc(36*var(--u))}
+.arch{position:relative;height:calc(820*var(--u));overflow:hidden;background:#1d1d1d}
+.arch::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 20%,#3a3a3a 0%,#1a1a1a 60%,#111 100%)}
+.arch::after{content:"";position:absolute;inset:0;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.arch .al{position:absolute;z-index:2;left:calc(40*var(--u));bottom:calc(36*var(--u));color:rgba(255,255,255,.8);font-size:calc(17*var(--u));font-size:max(12px,calc(17*var(--u)));line-height:1.5;display:flex;flex-direction:column}
+.arch .al b{font-size:max(10px,calc(12*var(--u)));letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-bottom:6px}
+.arch .al i{font-style:normal;color:rgba(255,255,255,.5)}
+.arch.wide{height:calc(700*var(--u))}
+/* brojke */
+.nums{background:var(--bg2)}
+.nums .over{margin-bottom:calc(90*var(--u))}
+.ngrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(110*var(--u)) calc(60*var(--u))}
+.ngrid>div{border-top:1.5px solid #D6D6D6;padding-top:calc(34*var(--u))}
+.ngrid b{display:block;font:400 calc(220*var(--u))/.9 var(--hf);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.ngrid span{display:block;margin-top:calc(22*var(--u));color:var(--gr);font-size:calc(22*var(--u))}
+/* narančaste sekcije sa 3D objektom */
+.ob{position:relative;background:#FF5F25;color:#fff;overflow:hidden;text-align:center;padding:calc(150*var(--u)) calc(128*var(--u) + var(--sx)) calc(140*var(--u))}
+.ob .over{justify-content:center;margin-bottom:calc(60*var(--u))}
+.ob .over::before{background:#fff}
+.ob .h{font-size:calc(190*var(--u));line-height:.92;position:relative;z-index:1}
+.ob .stage{position:relative;z-index:2;height:calc(600*var(--u));margin:calc(-330*var(--u)) auto 0;perspective:calc(1600*var(--u));display:grid;place-items:center}
+.ob .cap3{position:relative;z-index:3;max-width:calc(640*var(--u));margin:calc(40*var(--u)) auto 0;font-size:calc(24*var(--u));line-height:1.6}
+.ob .cap3 strong{display:block;font:400 calc(54*var(--u))/1.05 var(--hf);text-transform:uppercase;margin-bottom:calc(18*var(--u))}
+.ob small{display:block;margin-top:calc(26*var(--u));font-size:max(11px,calc(13*var(--u)));letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+/* baklja */
+.torch{width:calc(300*var(--u));height:calc(560*var(--u));transform:translateY(var(--ty,0px))}
+.torch svg{width:100%;height:100%;overflow:visible}
+.flame{transform-origin:150px 150px;animation:flick 1.6s ease-in-out infinite alternate}
+.flame2{transform-origin:150px 150px;animation:flick 1.1s ease-in-out infinite alternate-reverse}
+@keyframes flick{0%{transform:scale(1,1) skewX(0)}50%{transform:scale(.96,1.05) skewX(2deg)}100%{transform:scale(1.03,.95) skewX(-2deg)}}
+/* medalja */
+.medal{position:relative;width:calc(420*var(--u));height:calc(600*var(--u));transform-style:preserve-3d;transform:rotateY(var(--ry,0deg))}
+.medal .rib{position:absolute;left:50%;top:0;width:calc(280*var(--u));height:calc(290*var(--u));transform:translateX(-50%)}
+.medal .disc{position:absolute;left:50%;bottom:0;width:calc(380*var(--u));height:calc(380*var(--u));margin-left:calc(-190*var(--u));transform-style:preserve-3d}
+.medal .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:grid;place-items:center;align-content:center;color:#5d6066;
+  background:radial-gradient(circle at 35% 30%,#ffffff 0%,#e3e5e8 30%,#b9bdc3 62%,#8d9299 100%);box-shadow:inset 0 0 0 calc(14*var(--u)) rgba(255,255,255,.35),inset 0 0 0 calc(16*var(--u)) rgba(0,0,0,.12),0 calc(30*var(--u)) calc(60*var(--u)) rgba(80,20,0,.35)}
+.medal .face.back{transform:rotateY(180deg)}
+.medal .face b{font:400 calc(96*var(--u))/1 var(--hf);color:#4a4d52}
+.medal .face span{font:700 calc(15*var(--u))/1.4 'Poppins';letter-spacing:.2em;text-transform:uppercase}
+.medal .face img{width:42%;opacity:.55;filter:grayscale(1) brightness(.45)}
+#ulaznica .stage{margin-top:calc(-60*var(--u));height:calc(480*var(--u))}
+/* ulaznica */
+.ticket{position:relative;display:flex;width:calc(820*var(--u));height:calc(330*var(--u));background:#FBF7EF;color:var(--bk);text-align:left;border-radius:calc(10*var(--u));box-shadow:0 calc(40*var(--u)) calc(80*var(--u)) rgba(90,25,0,.35);transform:rotateX(var(--rx,18deg)) rotateY(var(--ry,-14deg)) rotateZ(var(--rz,-6deg));transform-style:preserve-3d;transition:transform .2s ease-out}
+.ticket::before{content:"";width:calc(26*var(--u));background:#D8462A;border-radius:calc(10*var(--u)) 0 0 calc(10*var(--u))}
+.ticket .tm{flex:1;padding:calc(44*var(--u)) calc(48*var(--u));display:flex;flex-direction:column;justify-content:space-between}
+.ticket .tm em{font:700 calc(16*var(--u))/1.5 'Poppins';font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#7a7368}
+.ticket .tm strong{font:400 calc(64*var(--u))/1 var(--hf);text-transform:uppercase}
+.ticket .tm span{font:600 calc(17*var(--u))/1 'Poppins';letter-spacing:.1em}
+.ticket .ts{width:calc(230*var(--u));border-left:2px dashed #cfc6b6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(6*var(--u));background:#F3ECE0;border-radius:0 calc(10*var(--u)) calc(10*var(--u)) 0}
+.ticket .ts b{font:400 calc(110*var(--u))/1 var(--hf);color:#D8462A}
+.ticket .ts span{font:700 calc(16*var(--u))/1 'Poppins';letter-spacing:.2em}
+.ticket .ts img{width:calc(58*var(--u));margin-top:calc(14*var(--u));filter:brightness(0) saturate(100%) invert(36%) sepia(80%) saturate(2000%) hue-rotate(350deg)}
+/* banneri centara */
+.band{position:relative;height:calc(900*var(--u));min-height:420px;overflow:hidden;color:#fff;background:var(--bk)}
+.band img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;transform:translateY(var(--py,0px)) scale(1.02)}
+.band .bshade{position:absolute;inset:0;background:radial-gradient(ellipse 78% 125% at 0% 80%,rgba(245,90,51,1) 0%,rgba(245,90,51,.9) 26%,rgba(245,90,51,.5) 52%,rgba(245,90,51,0) 100%)}
+.band .btx{position:absolute;z-index:2;left:calc(120*var(--u) + var(--sx));bottom:calc(90*var(--u))}
+.band .over{margin:0 0 calc(40*var(--u)) calc(6*var(--u))}
+.band .h{font-size:calc(280*var(--u));line-height:.85}
+/* brojka zetra */
+.big{text-align:center;padding:calc(190*var(--u)) calc(128*var(--u) + var(--sx))}
+.big .over{justify-content:center;margin-bottom:calc(50*var(--u))}
+.big b{display:block;font:400 calc(330*var(--u))/.9 var(--hf);font-variant-numeric:tabular-nums}
+.big p{margin:calc(40*var(--u)) auto 0;max-width:calc(620*var(--u));font-size:calc(26*var(--u));line-height:1.55;color:var(--gr)}
+/* zatvaranje */
+.close{position:relative;background:#fff}
+.close .arch{height:calc(760*var(--u));margin:0 calc(128*var(--u) + var(--sx))}
+.close .qbox{position:relative;z-index:2;background:var(--or);color:#fff;margin:calc(-220*var(--u)) calc(128*var(--u) + var(--sx)) 0 calc(330*var(--u) + var(--sx));padding:calc(100*var(--u)) calc(110*var(--u)) calc(110*var(--u))}
+.close .over{margin-bottom:calc(50*var(--u))}
+.close .h{font-size:calc(150*var(--u));line-height:.92;margin-bottom:calc(50*var(--u))}
+.close .qbox p{margin:0 0 calc(14*var(--u));font-size:calc(22*var(--u));line-height:1.6;max-width:calc(760*var(--u))}
+.close .qbox small{display:block;font-size:calc(17*var(--u));opacity:.8}
+/* danas */
+.today{padding:calc(180*var(--u)) calc(128*var(--u) + var(--sx)) calc(187*var(--u))}
+.counter{font-variant-numeric:tabular-nums}
+
+/* ===== v2: povijesna stranica – mirnije, više zraka, paralaksa ===== */
+.sec{padding:calc(300*var(--u)) calc(128*var(--u) + var(--sx))}
+.stmt .h{margin-bottom:calc(40*var(--u))}
+.stmt{padding:calc(320*var(--u)) calc(128*var(--u) + var(--sx)) calc(300*var(--u))}
+.story{padding-bottom:calc(260*var(--u))}
+.row{margin-bottom:calc(320*var(--u))}
+.rt .h{font-family:'Poppins',sans-serif;font-weight:600;text-transform:none;letter-spacing:-.015em;font-size:calc(50*var(--u));line-height:1.18;margin-bottom:calc(34*var(--u));max-width:calc(620*var(--u))}
+.nums.org{background:#FF5F25;color:#fff}
+.nums.org .over{color:rgba(255,255,255,.85)}.nums.org .over::before{background:#fff}
+.nums.org .ngrid>div{border-top-color:rgba(255,255,255,.4)}
+.nums.org .ngrid span{color:rgba(255,255,255,.85)}
+.ngrid{row-gap:calc(170*var(--u))}
+.ob{background:#1F1F1F;padding:calc(280*var(--u)) calc(128*var(--u) + var(--sx)) calc(260*var(--u))}
+.ob .over{color:rgba(255,255,255,.7)}.ob .over::before{background:var(--or)}
+.ob .cap3{margin-top:calc(90*var(--u))}
+.ob .cap3 strong{font-family:'Poppins',sans-serif;font-weight:600;text-transform:none;letter-spacing:-.01em;font-size:calc(36*var(--u));line-height:1.25}
+.band{height:max(calc(1400*var(--u)),110vh)}
+.band img{top:-15%;height:130%}
+.band .bshade{background:linear-gradient(180deg,rgba(20,10,5,.25) 0%,rgba(20,10,5,.35) 50%,rgba(20,10,5,.55) 100%),rgba(245,90,51,.28)}
+.band .btx{left:0;right:0;bottom:auto;top:50%;transform:translateY(-50%);text-align:center}
+.band .over{justify-content:center;margin:0 0 calc(70*var(--u))}
+.band .h{font-size:calc(300*var(--u))}
+.big{padding:calc(320*var(--u)) calc(128*var(--u) + var(--sx))}
+.today{padding-top:calc(300*var(--u))}
+.close .qbox{margin-top:calc(-260*var(--u))}
+/* paralaksa: nezavisno od animacija pojavljivanja */
+[data-sp]{translate:0 var(--pz,0px);will-change:translate}
+/* mirne, sporije animacije pojavljivanja (bez blura, bez narančaste plohe) */
+.ln{clip-path:none}
+.ln>span{transform:translateY(38%);filter:blur(3px);transition:transform 2s cubic-bezier(.22,.61,.36,1),opacity 1.7s ease,filter 1.9s ease;transition-delay:calc(var(--i,0)*200ms + var(--d,0ms))}
+.fu{transform:translateY(46px);filter:blur(3px);transition:opacity 1.9s ease,transform 2.2s cubic-bezier(.22,.61,.36,1),filter 1.9s ease;transition-delay:var(--d,0ms)}
+.over.fx{transition:opacity 1.6s ease,transform 1.9s cubic-bezier(.22,.61,.36,1);transition-delay:var(--d,0ms)}
+.over.fx::before{transition:transform 1.9s cubic-bezier(.22,.61,.36,1);transition-delay:calc(var(--d,0ms) + 200ms)}
+.pf{opacity:0;transition:opacity 2.2s ease;transition-delay:var(--d,0ms)}
+.pf.in{opacity:1}
+.pf img,.arch.pf::before{transform:scale(1.1);transition:transform 3.2s cubic-bezier(.22,.61,.36,1)!important;transition-delay:var(--d,0ms)}
+.pf.in img,.arch.pf.in::before{transform:none}
+.gw.pf.in:hover img{transform:scale(1.04);transition-duration:1.4s!important;transition-delay:0s}
+
+@media(max-width:900px){
+.sec,.stmt{padding:110px 20px}.story{padding-bottom:60px}.row,.row.rev{margin-bottom:110px}
+.rt .h{font-size:27px;max-width:none}
+.ngrid{row-gap:44px}
+.ob{padding:110px 20px 100px}.ob .cap3{margin-top:40px}.ob .cap3 strong{font-size:22px}
+.band{height:100svh}.band .btx{left:0;right:0}.band .h{font-size:clamp(60px,17.5vw,140px)}
+.big{padding:120px 20px}.today{padding-top:110px}
+}
+/* ===== v3: tamna povijesna stranica ===== */
+body{background:#161616}
+.page{background:#161616;color:#fff}
+.hero.nh{background:#161616}
+.hero.nh .h{font-size:min(calc(170*var(--u)),calc((100svh - 70*var(--u)) * .16))}
+.pp,.head .lead{color:#A6A6A6}
+.rt .h,.today .h{color:#fff}
+.arch{background:#232323}
+.arch::before{background:radial-gradient(120% 90% at 30% 20%,#383838 0%,#232323 60%,#1c1c1c 100%)}
+.ob{background:#1E1E1E}
+.nbgw{position:relative;overflow:hidden;background:#111}
+.nbgw .nbg{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover;transform:translateY(var(--py,0px))}
+.nbgw .nsh{position:absolute;inset:0;background:rgba(12,12,12,.72)}
+.nbgw>*:not(.nbg):not(.nsh){position:relative;z-index:1}
+.nums .ngrid>div{border-top-color:rgba(255,255,255,.3)}
+.ngrid b{font-size:calc(108*var(--u));color:#fff}
+.ngrid span,.nums.nbgw span{color:rgba(255,255,255,.75)}
+.big b{font-size:calc(190*var(--u));color:#fff}
+.big p{color:rgba(255,255,255,.75)}
+.close{background:#0B0B0B;color:#fff;text-align:center;padding:calc(340*var(--u)) calc(128*var(--u) + var(--sx))}
+.close .h{font-size:calc(170*var(--u));line-height:.95;margin:0 0 calc(70*var(--u))}
+.close p{margin:0 auto calc(16*var(--u));max-width:calc(700*var(--u));font-size:calc(24*var(--u));line-height:1.6;color:rgba(255,255,255,.8)}
+.close small{display:block;font-size:calc(17*var(--u));color:rgba(255,255,255,.5)}
+.today .gw{background:#222}
+.ngrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:calc(80*var(--u))}
+.nh .hemb{left:calc(820*var(--u) + var(--sx))}
+@media(max-width:900px){
+.hero.nh .h{font-size:clamp(52px,15vw,96px)}
+.ngrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 20px}.ngrid b{font-size:clamp(40px,12vw,64px)}
+.big b{font-size:clamp(60px,18vw,110px)}
+.close{padding:130px 20px}.close .h{font-size:clamp(46px,13vw,84px);margin-bottom:30px}.close p{font-size:16px;max-width:none}.close small{font-size:13px}
+}
+/* ===== v4 ===== */
+.hero.nh{background:var(--bk)}
+.hero.nh .slide img{transform:scale(1.06);transition:transform 9s ease-out}.hero.nh .slide.on img{transform:scale(1)}
+.hero.nh .h{font-size:min(calc(200*var(--u)),calc((100svh - 70*var(--u)) * .2))}
+.nums{background:#161616!important}
+.ob{background:#FF5F25}
+.ob .h{color:var(--or-d)}
+.ob .cap3{color:#fff}
+.ob small{color:rgba(255,255,255,.8)}
+.today{background:#fff;color:var(--bk)}
+.today .h{color:var(--bk)}.today .head .lead{color:var(--gr)}
+.close{background:var(--or);padding-bottom:0;overflow:hidden}
+.close p{color:rgba(255,255,255,.9)}.close small{color:rgba(255,255,255,.75)}
+.close .emb3{position:relative;height:calc(1000*var(--u));margin:calc(40*var(--u)) calc(-128*var(--u) - var(--sx)) 0;cursor:grab;touch-action:pan-y}
+.close .emb3.drag{cursor:grabbing}
+@media(max-width:900px){
+.close{padding-bottom:0}.close .emb3{height:110vw;margin:20px -20px 0}
+}
+/* ===== v5 ===== */
+.band img{top:-45%;height:190%;transform:translate3d(0,var(--py,0px),0);will-change:transform;backface-visibility:hidden}
+.hero.nh .slide{top:-45%;transform:translate3d(0,var(--py,0px),0);will-change:transform;transition:none}
+.hero.nh .slide img{transition:none;transform:none}
+.story{padding-top:calc(260*var(--u))}
+.ngrid b,.big b{font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1}
+.ngrid b{font-size:calc(72*var(--u))}
+.big b{font-size:calc(120*var(--u))}
+.today .gw .h{color:#fff}
+.page{overflow-x:clip}.ob,.games{overflow:hidden}
+.games .tx{pointer-events:none}
+@media(max-width:900px){
+.story{padding-top:90px!important}
+.ngrid b{font-size:clamp(32px,9vw,46px)}.big b{font-size:clamp(46px,13vw,72px)}
+}
+/* ===== v6 ===== */
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.arch::after{display:none}
+.ob{display:grid;justify-items:center}
+.ob .h{grid-row:1;grid-column:1;line-height:.84;margin:0}
+.ob .stage{grid-row:1;grid-column:1;align-self:center;margin:0!important}
+.ob .cap3{grid-row:2}.ob small{grid-row:3}
+@media(max-width:900px){
+.row .rt,.row.rev .rt{order:-1}
+}
+/* ===== v7 ===== */
+.band img{top:0;height:100%;transform:none;will-change:auto}
+.hero.nh .slide{top:0;transform:none;will-change:auto}
+.band .bshade{background:radial-gradient(ellipse 78% 125% at 0% 72%,rgba(245,90,51,1) 0%,rgba(245,90,51,.92) 26%,rgba(245,90,51,.55) 52%,rgba(245,90,51,0) 100%)}
+.pp,.head .lead,.ob .cap3,.big p,.games .tx2 p,.today .lead{font-size:18px!important;line-height:1.65}
+.ob .h{line-height:1.02}
+.torch3d{width:calc(640*var(--u));height:calc(1050*var(--u));cursor:grab;touch-action:pan-y}.torch3d.drag{cursor:grabbing}
+#baklja .stage{height:auto}
+@media(max-width:900px){.torch3d{width:78vw;height:118vw}}
+.ticket .tm strong{font-size:calc(50*var(--u));line-height:1.05}
+#malo-polje b{font-size:calc(260*var(--u))}
+@media(max-width:900px){.ticket .tm strong{font-size:22px}#malo-polje b{font-size:clamp(90px,30vw,150px)}}
+@media(max-width:900px){
+.pp,.head .lead,.ob .cap3,.big p,.games .tx2 p,.today .lead{font-size:16px!important}
+}
+/* ===== v8 ===== */
+.torch3d{width:calc(1000*var(--u));height:min(calc(1350*var(--u)),92vh)}
+#baklja .stage{height:auto}
+.story#prica{padding-bottom:calc(60*var(--u))}
+.nums.first{padding-top:calc(90*var(--u))}
+.nums.first .ngrid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:calc(80*var(--u));row-gap:calc(110*var(--u))}
+.nums .ngrid>div{border-top:0;padding-top:0}
+.nums.first .ngrid b{font-size:calc(250*var(--u));color:var(--or);letter-spacing:-.04em}
+.nums.first .ngrid span{font-size:18px;margin-top:calc(18*var(--u))}
+.pp,.head .lead,.ob .cap3,.big p,.games .tx2 p,.today .lead{font-size:16px!important}
+.vucko{background:#fff;color:var(--bk)}
+.vucko .rt .h{color:var(--bk)}.vucko .pp{color:var(--gr)}
+.vucko .arch{background:#fff}.vucko .arch::before{display:none}
+.vucko .arch img{object-fit:contain;padding:calc(30*var(--u))}
+@media(max-width:900px){
+.torch3d{width:96vw;height:150vw;max-height:80svh}
+.story#prica{padding-bottom:30px}.nums.first{padding-top:50px}
+.nums.first .ngrid{row-gap:36px;column-gap:20px}
+.nums.first .ngrid b{font-size:clamp(46px,14vw,80px)}
+.nums.first .ngrid span{font-size:14px}
+.vucko .arch{aspect-ratio:1/1}
+}
+/* ===== v10: brojke – bijele, Poppins, uredna mreža ===== */
+.nums .ngrid{grid-template-columns:repeat(4,minmax(0,1fr))!important;column-gap:calc(60*var(--u))!important;row-gap:calc(80*var(--u))!important;align-items:start}
+.nums .ngrid b{font-family:'Poppins',sans-serif!important;font-weight:600!important;letter-spacing:-.035em!important;line-height:1!important;font-size:calc(120*var(--u))!important;color:#fff!important;white-space:nowrap}
+.nums .ngrid span{display:block;font-size:16px!important;line-height:1.5;color:rgba(255,255,255,.65)!important;margin-top:calc(20*var(--u))!important;max-width:calc(300*var(--u))}
+.nums.first{padding-top:calc(140*var(--u))!important;padding-bottom:calc(220*var(--u))}
+#malo-polje{padding-top:calc(220*var(--u))}
+@media(max-width:900px){
+.nums .ngrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:20px!important;row-gap:40px!important}
+.nums .ngrid b{font-size:clamp(40px,13vw,64px)!important}
+.nums .ngrid span{font-size:14px!important;margin-top:8px!important;max-width:none}
+.nums.first{padding-top:60px!important;padding-bottom:100px}
+#malo-polje{padding-top:100px}
+}
+/* ===== v11: Vučko na tamnom, zbijeniji razmaci (desktop) ===== */
+.vucko{background:#161616!important;color:#fff}
+.vucko .rt .h{color:#fff!important}.vucko .pp{color:#A6A6A6!important}
+.vucko .arch{background:transparent!important}
+@media(min-width:901px){
+.sec{padding-top:calc(170*var(--u))!important;padding-bottom:calc(170*var(--u))!important}
+.story,.story[style]{padding-top:calc(170*var(--u))!important;padding-bottom:calc(150*var(--u))!important}
+.story#prica{padding-top:calc(170*var(--u))!important;padding-bottom:calc(40*var(--u))!important}
+.row{margin-bottom:calc(170*var(--u))!important}
+.nums.first{padding-top:calc(80*var(--u))!important;padding-bottom:calc(150*var(--u))!important}
+#malo-polje{padding-top:calc(130*var(--u))!important;padding-bottom:calc(150*var(--u))!important}
+.ob{padding-top:calc(150*var(--u))!important;padding-bottom:calc(150*var(--u))!important}
+.ob .cap3{margin-top:calc(40*var(--u))!important}
+.band{height:max(calc(1100*var(--u)),100vh)!important}
+.today{padding-top:calc(170*var(--u))!important;padding-bottom:calc(170*var(--u))!important}
+.games#zatvaranje{margin-top:0}
+}
+/* ===== v12: slider brojki ===== */
+.ob .h{align-self:center}
+.nslider{background:#161616;color:#fff;padding:calc(150*var(--u)) 0 calc(150*var(--u))}
+.nstrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;user-select:none}
+.nstrack::-webkit-scrollbar{display:none}.nstrack.drag{cursor:grabbing;scroll-snap-type:none}
+.ns{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:calc(760*var(--u)) 1fr;column-gap:calc(80*var(--u));align-items:center;padding:0 calc(128*var(--u) + var(--sx));box-sizing:border-box}
+.ns b{font:600 calc(330*var(--u))/.9 'Poppins',sans-serif;letter-spacing:-.06em;color:#4A4A4A;white-space:nowrap;transition:color .8s}
+.ns.on b{color:#7A7A7A}
+.ns h3{margin:0 0 calc(28*var(--u));font:600 calc(64*var(--u))/1.1 'Poppins',sans-serif;letter-spacing:-.025em}
+.ns p{margin:0;max-width:calc(520*var(--u));font-size:16px;line-height:1.65;color:#A6A6A6}
+.nsctl{display:flex;align-items:center;gap:calc(20*var(--u));margin:calc(90*var(--u)) calc(128*var(--u) + var(--sx)) 0;padding-top:calc(30*var(--u));border-top:1px solid rgba(255,255,255,.15)}
+.nsc{font:600 14px 'Poppins';letter-spacing:.14em;color:rgba(255,255,255,.7);min-width:70px}
+.nsbar{flex:1;height:2px;background:rgba(255,255,255,.15);overflow:hidden}
+.nsbar b{display:block;height:100%;background:var(--or);transform-origin:left;transform:scaleX(.16);transition:transform .5s ease}
+.nslider .circ.l .ar{transform:rotate(180deg)}
+@media(max-width:900px){
+.nslider{padding:80px 0 80px}
+.ns{grid-template-columns:minmax(0,1fr);row-gap:22px;padding:0 20px;align-items:start}
+.ns b{font-size:clamp(96px,32vw,160px)}
+.ns h3{font-size:28px;margin-bottom:12px}.ns p{max-width:none}
+.nsctl{margin:40px 20px 0;padding-top:20px}.nsctl .circ{width:48px;height:48px}
+}
+/* ===== v13: slider u narančastom ===== */
+.nstrack{overflow-y:hidden;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.nslider{background:#FF5F25!important;overflow:hidden}
+.ns b,.ns.on b{color:#fff}
+.ns h3{color:#fff}.ns p{color:rgba(255,255,255,.88)}
+.nsctl{border-top-color:rgba(255,255,255,.35)}
+.nsc{color:#fff}
+.nsbar{background:rgba(255,255,255,.3)}.nsbar b{background:#fff}
+.nslider .circ{background:transparent;box-shadow:inset 0 0 0 2px #fff;color:#fff}
+.nslider .circ:hover{background:#fff;color:var(--or-d)}
+.nslider{background:var(--or-d)!important}
+.ns b,.ns.on b{font-family:var(--hf)!important;font-weight:400!important;letter-spacing:0!important;line-height:.88!important;font-size:calc(400*var(--u))!important}
+.ns{grid-template-columns:calc(830*var(--u)) minmax(0,1fr);column-gap:calc(80*var(--u))}
+@media(max-width:900px){.ns{grid-template-columns:minmax(0,1fr)}.ns b,.ns.on b{font-size:clamp(110px,36vw,200px)!important}}
+
+/* ===== v14: slider brojki na svijetloj podlozi ===== */
+.nslider{background:#F3F3F3!important;color:var(--bk)}
+.ns b,.ns.on b{color:var(--or)!important}
+.ns h3{color:var(--bk)}.ns p{color:var(--gr)}
+.nsctl{border-top-color:#D6D6D6}
+.nsc{color:var(--bk)}
+.nsbar{background:#D6D6D6}.nsbar b{background:var(--or)}
+.nslider .circ{background:var(--or);box-shadow:none;color:#fff}
+.nslider .circ:hover{background:var(--or-d);color:#fff}
+
+/* ===== v18: narančasta ploha preko slika ===== */
+.hero.nh .slide{top:0!important;transform:none!important}
+.band img{top:0!important;height:100%!important;transform:none!important}
+.arch.im .cov,.gw.im .cov{z-index:6}
+.arch.im img{z-index:1}
+/* ===== v19: slike – lagani fade in + slide odozdo ===== */
+.ph{opacity:0;transform:translateY(70px);transition:opacity 1.6s ease,transform 1.8s cubic-bezier(.22,.61,.36,1);transition-delay:var(--d,0ms)}
+.ph.in{opacity:1;transform:none}
+.gw.ph.in:hover img{transform:scale(1.04)}
+/* ===== v21: veliki centrirani naslovi u bannerima ===== */
+.band .h{font-size:calc(340*var(--u))!important;line-height:.95}
+@media(max-width:900px){.band .h{font-size:16vw!important}}
+/* baklja do vrha sekcije */
+.medal3d{width:calc(1300*var(--u));height:calc(676*var(--u));cursor:grab;touch-action:pan-y;margin:0 auto}.medal3d.drag{cursor:grabbing}
+#jure{position:relative;padding-top:calc(150*var(--u))!important}#jure .h .ln:nth-child(2){margin-top:var(--jg,0px)}#jure .stage{position:absolute!important;grid-row:auto!important;grid-column:auto!important;top:0;left:0;right:0;height:auto!important;margin:0!important;z-index:3;display:block}#jure .h{position:relative;z-index:1}
+@media(max-width:900px){.medal3d{width:100vw;height:56vw}#jure{padding-top:18vw!important}#jure .h .ln:nth-child(2){margin-top:0}#jure .h .ln:nth-child(3){margin-top:var(--jg,0px)}}
+#baklja{padding-top:0!important}#baklja .stage{align-self:start!important}
+#brojke .nsctl{border-top:0!important;padding-top:0!important}
+/* ===== v16 ===== */
+@media(min-width:901px){.vucko{padding-top:calc(90*var(--u))!important;padding-bottom:calc(90*var(--u))!important}}
+@media(max-width:900px){.vucko .row .rt{order:1}}
+/* ===== v15 ===== */
+.nslider{background:#FF5F25!important;color:#fff}
+.ns b,.ns.on b{color:var(--or-d)!important}
+.ns h3{color:#fff}.ns p{color:rgba(255,255,255,.9)}
+.nsctl{border-top-color:rgba(255,255,255,.35)}
+.nsc{color:#fff}
+.nsbar{background:rgba(255,255,255,.3)}.nsbar b{background:#fff}
+.nslider .circ{background:transparent;box-shadow:inset 0 0 0 2px #fff;color:#fff}
+.nslider .circ:hover{background:#fff;color:var(--or)}
+#jure .cap3,#zatvaranje .cap3,#baklja .cap3{justify-self:center!important;text-align:center!important;margin-left:auto!important;margin-right:auto!important}
+/* prvi ekran: banner + brojke zajedno */
+@media(min-width:901px){
+.hero.nh{height:60vh!important;min-height:520px}
+.hero.nh .h{font-size:min(calc(170*var(--u)),calc(60vh * .2))!important}
+.nslider{padding-top:calc(70*var(--u))!important}
+.ns b,.ns.on b{font-size:calc(340*var(--u))!important}
+}
+@media(max-width:900px){
+.hero.nh{height:56svh!important;min-height:400px}
+.hero.nh .h{font-size:clamp(48px,13vw,84px)!important}
+.nslider{padding-top:36px!important}
+}
+#zatvaranje .cap3{justify-self:start;text-align:left;margin-left:0;margin-right:0}
+#baklja .cap3{justify-self:start;text-align:left;margin-left:0;margin-right:0}
+
+@media(max-width:900px){
+.hero.nh{height:calc(100svh - 112px)}
+.hero.nh .h{font-size:clamp(64px,19vw,120px)}
+.nh .hemb{left:-10vw;right:-10vw;top:70px;bottom:auto;height:100vw}
+.sec,.stmt{padding:72px 20px}
+.stmt .over{margin-bottom:24px}.stmt .h{font-size:clamp(40px,11.5vw,70px)}.stmt .h.i2,.stmt .h.i3{margin-left:0}.stmt .h{white-space:normal}
+.story{padding:0 20px 40px}
+.row,.row.rev{grid-template-columns:minmax(0,1fr);row-gap:28px;margin-bottom:64px}.row.rev .arch{order:0}.row.rev .rt{padding-left:0}
+.arch,.arch.wide{height:auto;aspect-ratio:4/5}.arch .al{left:18px;bottom:16px;font-size:13px}
+.rt .over{margin-bottom:16px}.rt .h{font-size:27px;margin-bottom:16px}.pp{font-size:17px;max-width:none}
+.nums .over{margin-bottom:40px}.ngrid{grid-template-columns:minmax(0,1fr);gap:34px}.ngrid>div{padding-top:18px}.ngrid b{font-size:clamp(64px,22vw,110px)}.ngrid span{font-size:15px;margin-top:8px}
+.ob{padding:72px 20px 64px}.ob .over{margin-bottom:26px}.ob .h{font-size:clamp(48px,14vw,90px)}
+.ob .stage{height:300px;margin-top:-110px}.ob .cap3{font-size:17px;max-width:none}.ob .cap3 strong{font-size:22px}
+.torch{width:170px;height:320px}.medal{width:200px;height:290px}.medal .rib{width:134px;height:140px}.medal .disc{width:186px;height:186px;margin-left:-93px}.medal .face b{font-size:54px}.medal .face span{font-size:10px}
+#ulaznica .stage{margin-top:-20px;height:240px}.ticket{width:88vw;height:150px}.ticket .tm{padding:18px 18px}.ticket .tm em{font-size:9px}.ticket .tm strong{font-size:28px}.ticket .tm span{font-size:10px}.ticket .ts{width:92px}.ticket .ts b{font-size:46px}.ticket .ts span{font-size:9px}.ticket .ts img{width:26px}
+.band{height:100svh}.band .h{font-size:clamp(60px,17.5vw,140px)}.band .over{margin-bottom:16px}
+.big{padding:80px 20px}.big b{font-size:clamp(84px,27vw,160px)}.big p{font-size:17px}
+.close .arch{margin:0 20px;height:auto;aspect-ratio:4/3}.close .qbox{margin:-60px 20px 0;padding:40px 22px 44px}.close .h{font-size:clamp(44px,13vw,80px);margin-bottom:22px}.close .qbox p{font-size:16px}.close .qbox small{font-size:14px}
+.today{padding:72px 20px}
+}
+</style>
+</head>
+<body class="intro">
+<div id="intro" role="status" aria-label="Loading"><img src="img/logo-white.svg" alt=""><i class="bar"><b id="ibar"></b></i></div>
+
+<div class="brand" id="brand">
+  <a class="logo" href="index-en.html" aria-label="ZOI'84 – home"><img src="img/logo-white.svg" alt="ZOI'84"></a>
+  <button class="mbtn" id="mb" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+    <span class="burger" aria-hidden="true"><i></i><i></i></span>
+    <span class="mlbl"><span>MENU</span><span>CLOSE</span></span>
+  </button>
+</div>
+
+<nav class="nav" id="nav" aria-label="Main menu" inert>
+  <div class="nmain">
+  <div class="nlang"><a href="nasljedje.html" lang="bs" hreflang="bs">Bosanski</a><a href="#top" class="on" aria-current="true" lang="en">English</a></div>
+  <ul>
+    <li><a href="index-en.html">Home</a></li>
+    <li><a href="o-nama-en.html">About us</a></li>
+    <li><a href="#top" class="on" aria-current="page">Heritage '84</a></li>
+    <li><a href="novosti.html">News</a></li>
+    <li><a href="dokumenti.html">Documents</a></li>
+    <li><a href="natjecaji.html">Tenders</a></li>
+  </ul>
+  </div>
+  <aside><b>CONTACT</b>033 212 035<br>marketing@zoi84.ba<b>ADDRESS</b>Alipašina b.b.<br>71 000 Sarajevo, Bosnia and Herzegovina</aside>
+</nav>
+
+<div class="page">
+<header class="hero nh" id="top">
+  <a class="lang" href="nasljedje.html" hreflang="bs"><span style="opacity:.55">BS</span> / EN</a>
+  <div class="slide on"><img src="img/zastave.jpg" alt="Skiers with flags of participating nations on Bjelašnica" style="object-position:55% 40%"></div>
+  <div class="shade"></div>
+  <div class="tx"><h1 class="h">A winter<br>we will never<br>forget.</h1></div>
+</header>
+
+<section class="nslider" id="brojke">
+  <div class="nstrack" id="nstrack">
+    <article class="ns"><b>49</b><div class="nt"><h3>Participating nations</h3><p>49 nations gathered under the Olympic rings, a record at the time for the Winter Games.</p></div></article>
+    <article class="ns"><b>1.272</b><div class="nt"><h3>Athletes</h3><p>For twelve days the world’s best winter athletes competed at Olympic venues in Sarajevo and on the surrounding mountains.</p></div></article>
+    <article class="ns"><b>39</b><div class="nt"><h3>Olympic events</h3><p>Medals were awarded in 39 events, from alpine skiing on Bjelašnica to figure skating in Zetra.</p></div></article>
+    <article class="ns"><b>696</b><div class="nt"><h3>Thousand spectators</h3><p>Almost 700,000 people watched the competitions live on the slopes, ski jumps and in the arenas.</p></div></article>
+    <article class="ns"><b>80</b><div class="nt"><h3>Thousand at Malo polje</h3><p>That is how many people came to Igman to watch the Olympic ski jumping live.</p></div></article>
+    <article class="ns"><b>10+</b><div class="nt"><h3>Thousand volunteers</h3><p>Without volunteers there would have been no Games. The people of Sarajevo were hosts, guides and the face of the city to the world.</p></div></article>
+  </div>
+  <div class="nsctl"><span class="nsc" id="nsc">01 / 06</span><i class="nsbar"><b id="nsbar"></b></i><button class="circ l" id="nsp" aria-label="Previous"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="circ" id="nsn" aria-label="Next"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+</section>
+
+
+
+<section class="story" id="prica">
+  <div class="row">
+    <div class="arch"><img src="img/publika.jpg" alt="Sarajevo during the Games"></div>
+    <div class="rt"><h2 class="h">Sarajevo at the centre of the world.</h2><p class="pp">In 1984 Sarajevo hosted the XIV Olympic Winter Games and became the centre of world winter sport. The city and its surrounding mountains welcomed the best athletes from around the world, and the name of Sarajevo was heard every day far beyond the borders of what was then Yugoslavia. For the city, its people and the whole country it was a moment of exceptional significance, and its legacy is still present today.</p></div>
+  </div>
+  <div class="row rev">
+    <div class="arch"><img src="img/kosarka-zakucavanje.jpg" alt="Opening ceremony"></div>
+    <div class="rt"><h2 class="h">The largest sporting event in the history of Yugoslavia.</h2><p class="pp">Organising the Olympic Winter Games was a sporting and organisational undertaking unlike anything Yugoslavia had experienced before. 1,272 athletes from 49 nations competed, and almost 700,000 spectator visits were recorded at the Olympic venues. For twelve Olympic days Sarajevo lived to the rhythm of competition, bringing local and international audiences together around one shared event.</p></div>
+  </div>
+</section>
+
+
+
+<section class="ob" id="baklja">
+  <h2 class="h" data-desk="One flame.<br>One country.">One<br>flame.<br>One<br>country.</h2>
+  <div class="stage"><div class="torch3d" id="torch3d" aria-hidden="true"></div></div>
+  <p class="cap3">Before arriving in Sarajevo, the Olympic flame travelled through all six republics and both autonomous provinces of what was then Yugoslavia. Its journey connected different cities, regions and generations, bringing the Olympic atmosphere to those who could not attend the Games. The Olympic torch became a symbol of togetherness and of an event that belonged not only to Sarajevo, but to the whole country.</p>
+</section>
+
+
+
+<section class="band" id="bjelasnica">
+  <img src="img/hero-skijanje-desktop.jpg" alt="" style="object-position:62% 40%">
+  <div class="bshade"></div>
+  <div class="btx"><h2 class="h">Bjelašnica</h2></div>
+</section>
+
+
+
+<section class="story" style="padding-top:calc(300*var(--u))">
+  <div class="row">
+    <div class="arch"><img src="img/slalom-staza.jpg" alt="Building the Olympic slopes"></div>
+    <div class="rt"><h2 class="h">The mountain that made Olympic history.</h2><p class="pp">Preparations for the Winter Games transformed Bjelašnica. Ski slopes and lifts were built for the Olympic events, and the Famos and Smuk hotels and a press centre for local and international media were built at the foot of the mountain. The mountain gained the infrastructure needed to host the world’s biggest ski races, laying the foundation for the Olympic centre we know today.</p></div>
+  </div>
+  <div class="row rev">
+    <div class="arch"><img src="img/fis-c.jpg" alt="Alpine skiing"></div>
+    <div class="rt"><h2 class="h">The world’s best skiers on our mountain.</h2><p class="pp">During the Sarajevo Olympics, Bjelašnica hosted all the men’s alpine skiing events – downhill, slalom and giant slalom. Its steep slopes brought together the world’s best skiers, while thousands of spectators watched from the surrounding hillsides. The Olympic races introduced Bjelašnica to an international audience and wrote its name into the history of world skiing.</p></div>
+  </div>
+</section>
+
+
+
+<section class="ob" id="jure">
+  <h2 class="h" data-desk="Volimo Jureka<br>više od bureka!">Volimo<br>Jureka<br>više od<br>bureka!</h2>
+  <div class="stage"><div class="medal3d" id="medal3d" aria-hidden="true"></div></div>
+  <p class="cap3"><strong>Silver that was worth gold.</strong>One of the most emotional moments of the Sarajevo Olympics happened on Bjelašnica, when Slovenian skier Jure Franko won silver in the giant slalom. It was Yugoslavia’s first ever Winter Olympic medal and a reason to celebrate across the country. Sarajevans marked his success with a witty slogan – “We love Jure more than burek!” – that outlived the Games and remains a symbol of an unforgettable winter.</p>
+</section>
+
+<section class="band" id="igman">
+  <img src="img/staza-zastave.jpg" alt="" style="object-position:50% 45%">
+  <div class="bshade"></div>
+  <div class="btx"><h2 class="h">Igman</h2></div>
+</section>
+
+<section class="story" style="padding-top:calc(300*var(--u))">
+  <div class="row">
+    <div class="arch"><img src="img/staza-zastave.jpg" alt="Olympic ski jumps"></div>
+    <div class="rt"><h2 class="h">Two ski jumps. Just 18 months.</h2><p class="pp">Two large ski jumps were built at Malo polje for the Olympic events, designed by Slovenian engineers, the brothers Janez and Vlado Gorišek. This demanding construction project took just a year and a half. Set in a natural mountain amphitheatre, the jumps became the stage for spectacular competitions that drew tens of thousands of spectators.</p></div>
+  </div>
+  <div class="row rev">
+    <div class="arch"><img src="img/slalom-c.jpg" alt="Nordic events"></div>
+    <div class="rt"><h2 class="h">An Olympic story in the forests of Igman.</h2><p class="pp">While Malo polje was the centre of Olympic ski jumping, nearby Veliko polje hosted cross-country skiing, biathlon and Nordic combined. Wide mountain plateaus and dense forests provided a natural setting for these winter sports. Together with Malo polje, Veliko polje made Igman one of the most important mountain venues of the Sarajevo Olympics.</p></div>
+  </div>
+</section>
+
+
+
+<section class="band" id="zetra">
+  <img src="img/zetra-klizanje.jpg" alt="" style="object-position:45% 22%">
+  <div class="bshade"></div>
+  <div class="btx"><h2 class="h">Zetra</h2></div>
+</section>
+
+
+
+<section class="story" style="padding-top:calc(300*var(--u))">
+  <div class="row">
+    <div class="arch"><img src="img/zetra-retro.jpg" alt="Building the Zetra hall"></div>
+    <div class="rt"><h2 class="h">The most ambitious construction project of the Games.</h2><p class="pp">Built for the XIV Olympic Winter Games, Zetra was the largest single construction project of the Sarajevo Olympics. It was officially opened in 1982, and its distinctive design was the work of architects Lidumil Alikalfić and Dušan Đapa and engineer Osman Morankić. The project received the prestigious Borba award for the best architectural achievement in Yugoslavia, making Zetra a symbol of the building and architecture of its time.</p></div>
+  </div>
+  <div class="row rev">
+    <div class="arch"><img src="img/kuglana.jpg" alt="Zetra hall"></div>
+    <div class="rt"><h2 class="h">More than 145,000 spectators at the Zetra venues.</h2><p class="pp">During the Games, Zetra was the centre of ice sports. The hall hosted figure skating and ice hockey, including the final games of the Olympic hockey tournament, while the world’s best speed skaters raced for medals on the outdoor rink. Over twelve Olympic days the Zetra complex drew more than 145,000 spectators, making it one of the most visited venues of the Sarajevo Games.</p></div>
+  </div>
+</section>
+
+
+
+<section class="ob" id="zatvaranje">
+  <h2 class="h" data-desk="„Doviđenja,<br>drago Sarajevo!“">„Doviđenja,<br>drago<br>Sarajevo!“</h2>
+  <p class="cap3">After twelve Olympic days, on 19 February 1984, Zetra hosted the closing ceremony of the XIV Olympic Winter Games. Athletes and hosts gathered one last time to mark the end of an event Sarajevo had prepared for over years. IOC President Juan Antonio Samaranch bade farewell to the hosts in the local language – “Goodbye, dear Sarajevo!” – words that remain deeply etched in the city’s collective memory.</p>
+</section>
+
+<section class="today centri">
+  <div class="head">
+    <div><h2 class="h">Olympic centres<br>today.</h2></div>
+    <p class="lead">From mountain slopes to a great city arena. Two Olympic centres, different experiences and one shared legacy.</p>
+  </div>
+  <div class="cards">
+    <a class="gw" href="o-nama-en.html#bjelasnica">
+      <img src="img/bjelasnica-dron.jpg" alt="Snow-covered Bjelašnica from the air" style="object-position:24% 50%">
+      <div class="bt"><h3 class="h">Bjelašnica</h3><p>An Olympic mountain with top ski slopes and unique nature. A destination for sport and recreation all year round.</p></div>
+      <span class="circ go" aria-label="Discover Bjelašnica"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="gw" href="o-nama-en.html#zetra">
+      <img src="img/zetra-zrak.jpg" alt="Zetra Olympic Centre from the air" style="object-position:47% 40%">
+      <div class="bt"><h3 class="h">Zetra</h3><p>The Olympic Hall and one of the symbols of Sarajevo 1984. A hub for sports, cultural and entertainment events all year round.</p></div>
+      <span class="circ go" aria-label="Discover Zetra"><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<footer id="kontakt">
+  <div class="ftop">
+    <div>
+      <p class="over w">Contact</p>
+      <h2 class="h">Have a question<br>or a business offer?</h2>
+      <p>Get in touch about venue hire, partnerships, media enquiries or any question about our work.</p>
+      <a class="btn ol" href="#kontakt">Contact us <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="clist">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>033 212 035</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>marketing@zoi84.ba</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Alipašina b.b., 71 000 Sarajevo, Bosnia and Herzegovina</li>
+    </ul>
+  </div>
+  <div class="fcols">
+    <div class="flogo"><img src="img/logo-footer.svg" alt="ZOI'84 – OCS"></div>
+    <div><h5>ZOI'84</h5><a href="o-nama-en.html">About us</a><a href="nasljedje-en.html">Heritage '84</a><a href="novosti.html">News</a><a href="natjecaji.html">Careers</a></div>
+    <div><h5>DOCUMENTS</h5><a href="dokumenti.html#nabavke">Public procurement</a><a href="natjecaji.html">Job vacancies</a><a href="dokumenti.html#izvjestaji">Reports</a><a href="dokumenti.html#pristup">Access to information</a></div>
+    <div><h5>FOLLOW US</h5><div class="soc">
+      <a href="https://www.facebook.com/zoi84ocs/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 8H17V4.2h-2.9C11.2 4.2 10 6 10 8.5V11H7.5v3.8H10V22h4v-7.2h2.8l.6-3.8H14V9c0-.6.3-1 .5-1z"/></svg></a>
+      <a href="https://www.instagram.com/zoi84ocs/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
+      <a href="https://www.youtube.com/channel/UC6n0Kcd6Ip3v-0Ez6NFuIew" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2l5 2.8-5 2.8z" fill="currentColor" stroke="none"/></svg></a>
+    </div></div>
+  </div>
+  <div class="fbot"><span>© 2026 KJP ZOI'84 Olympic Centre Sarajevo d.o.o.</span><nav aria-label="Legal pages"><a href="#">Privacy</a><span>·</span><a href="#">Cookies</a><span>·</span><a href="#">Accessibility</a></nav><span>Design and development: MANZEN</span></div>
+</footer>
+</div>
+
+<script>
+{
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const brand=$('#brand'), nav=$('#nav'), mb=$('#mb');
+  const setNav=o=>{brand.classList.toggle('open',o);nav.classList.toggle('open',o);nav.inert=!o;mb.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+  mb.addEventListener('click',()=>setNav(!nav.classList.contains('open')));
+  $$('#nav a').forEach(a=>a.addEventListener('click',()=>setNav(false)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setNav(false)});
+  // naslovi red po red
+  const lineSplit=el=>{if(!el.dataset.src)el.dataset.src=el.innerHTML.trim();
+    const segs=el.dataset.src.split(/<br\s*\/?>/i).map(t=>t.replace(/<[^>]+>/g,'').trim());
+    el.innerHTML=segs.map(t=>t.split(/\s+/).map(w=>`<span class="w" style="white-space:nowrap">${w}</span>`).join(' ')).join('<br>');
+    const rows=[];let top=null;el.querySelectorAll('.w').forEach(w=>{const t=w.offsetTop;if(top===null||Math.abs(t-top)>4){rows.push([]);top=t}rows[rows.length-1].push(w.textContent)});
+    el.innerHTML=rows.map((r,i)=>`<span class="ln"><span style="--i:${i}">${r.join(' ')}</span></span>`).join('')};
+  const lp=$$('h1.h, h2.h, .gw .h');
+  const fit=el=>{if(el.dataset.desk){if(!el.dataset.mob)el.dataset.mob=el.innerHTML.trim();el.dataset.src=innerWidth>900?el.dataset.desk:el.dataset.mob}if(!el.dataset.src)el.dataset.src=el.innerHTML.trim();const segs=el.dataset.src.split(/<br\s*\/?>/i).map(t=>t.replace(/<[^>]+>/g,'').trim());
+    const t=document.createElement('span');t.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;font-size:100px';el.appendChild(t);
+    let mw=0;segs.forEach(x=>{t.textContent=x;mw=Math.max(mw,t.getBoundingClientRect().width)});t.remove();
+    const cs=getComputedStyle(el.parentElement),w=el.parentElement.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    el.style.fontSize=(100*w/mw*.98).toFixed(1)+'px'};
+  // mobitel: medalja između "Volimo Jureka" i "više od bureka!"
+  // medalja između redova naslova: desktop iza "Volimo Jureka", mobitel iza "Jureka"
+  const placeJure=()=>{const sec=$('#jure');if(!sec)return;const h=sec.querySelector('.h'),st=sec.querySelector('.stage'),md=$('#medal3d');
+    const mob=innerWidth<=900,ls=h.querySelectorAll('.ln'),idx=mob?2:1;if(ls.length<=idx)return;
+    const W=md.offsetWidth,H=md.offsetHeight,asp=W/H,halfH=Math.max(.62,.62/asp),VEL=mob?1.11:.852,gy=-halfH+VEL*.53+.02;
+    const med=VEL/(2*halfH)*H,cen=H/2-gy/(2*halfH)*H,medTop=cen-med/2,pad=mob?innerWidth*.04:H*.06,extra=mob?innerWidth*.06:H*.05;
+    h.style.setProperty('--jg',Math.round(med+pad*2+extra)+'px');
+    const lb=ls[idx-1].getBoundingClientRect().bottom-sec.getBoundingClientRect().top;
+    st.style.setProperty('top',Math.round(lb+pad-medTop)+'px','important')};
+  const doLines=()=>{$$('.ob .h').forEach(fit);lp.forEach(lineSplit);placeJure()};
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(doLines);
+  let rt,lw=innerWidth;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(innerWidth!==lw){lw=innerWidth;doLines()}},200)});
+  const mark=(sel,cls,step=0,base=0)=>$$(sel).forEach((el,i)=>{el.classList.add(cls);if(step||base)el.style.setProperty('--d',(base+i*step)+'ms')});
+  const group=(parentSel,childSel,cls,step,base=0)=>$$(parentSel).forEach(p=>[...p.querySelectorAll(childSel)].forEach((el,i)=>{el.classList.add(cls);el.style.setProperty('--d',(base+i*step)+'ms')}));
+  mark('.over','fx');
+  mark('.pp, .head .lead, .ftop p, .ob .cap3, .big p, .games .tx2 p','fu',0,250);
+  mark('.ftop .btn, .ob small, .close small','fu',0,450);
+  mark('.ob .stage','fu',0,200);
+  mark('.lang','fu');
+  group('.ngrid','.ngrid>div','fu',120);
+  mark('.big b','fu',0,150);
+  $$('.arch').forEach(el=>el.classList.add('ph'));
+  group('.cards','.gw','ph',200);
+  group('.clist','li','fu',110,200);
+  group('.fcols','.fcols>div','fu',110);
+  mark('.fbot','fu',0,200);
+  const heads=lp.filter(h=>!h.closest('.hero'));
+  // brojke se odbrojavaju
+  const fmt=n=>Math.round(n).toLocaleString('de-DE');
+  const count=el=>{const to=+el.dataset.to,suf=el.dataset.suffix||'';if(reduce){el.textContent=fmt(to)+suf;return}const t0=performance.now(),D=1800;const f=t=>{const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,4);el.textContent=fmt(to*e)+suf;if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io.unobserve(el);
+    const d=parseFloat(el.style.getPropertyValue('--d'))||0;setTimeout(()=>el.style.setProperty('--d','0ms'),d+1600)}),{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+  const revealQ=[];const whenReady=f=>revealQ.push(f);
+  whenReady(()=>[...heads,...$$('.fu,.fx,.ph')].filter(el=>!el.closest('.hero')).forEach(el=>io.observe(el)));
+  // paralaksa: elementi lebde različitim brzinama
+  const SP=[];
+  const px=[];SP.forEach(([sel,sp])=>$$(sel).forEach(el=>{el.dataset.sp=sp;px.push(el)}));
+  const mob=()=>innerWidth<=900;
+  const para=()=>{if(reduce)return;const k=mob()?.5:1,vh=innerHeight;px.forEach(el=>{const r=el.getBoundingClientRect();
+    const base=r.top+r.height/2-(parseFloat(el.style.getPropertyValue('--pz'))||0);if(base<-vh||base>vh*2)return;
+    el.style.setProperty('--pz',(-(base-vh/2)*el.dataset.sp*k).toFixed(1)+'px')})};
+  let raf=0;addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;para()})},{passive:true});addEventListener('resize',para);para();
+  // slider brojki
+  {const tr=$('#nstrack');if(tr){const sl=[...tr.children],n=sl.length,c=$('#nsc'),bar=$('#nsbar');
+    const idx=()=>Math.round(tr.scrollLeft/tr.clientWidth);
+    const upd=()=>{const i=Math.min(n-1,Math.max(0,idx()));c.textContent=String(i+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');bar.style.transform=`scaleX(${(i+1)/n})`;sl.forEach((s,k)=>s.classList.toggle('on',k===i))};
+    const go=i=>tr.scrollTo({left:Math.max(0,Math.min(n-1,i))*tr.clientWidth,behavior:'smooth'});
+    $('#nsn').addEventListener('click',()=>go(idx()+1));$('#nsp').addEventListener('click',()=>go(idx()-1));
+    tr.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});upd();
+    let down=false,sx=0,sl0=0,mv=false;
+    tr.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;down=true;mv=false;sx=e.clientX;sl0=tr.scrollLeft});
+    addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(!mv&&Math.abs(dx)>5){mv=true;tr.classList.add('drag')}if(mv){tr.scrollLeft=sl0-dx;e.preventDefault()}});
+    addEventListener('pointerup',e=>{if(!down)return;down=false;if(mv){tr.classList.remove('drag');const dx=e.clientX-sx;go(Math.abs(dx)>tr.clientWidth*.12?idx0(dx):idx())}});
+    const idx0=dx=>Math.round(sl0/tr.clientWidth)+(dx<0?1:-1);
+    tr.addEventListener('dragstart',e=>e.preventDefault());
+  }}
+  // skrol: paralaksa bannera, baklja, medalja se okreće, ulaznica se naginje
+  const prog=el=>{const r=el.getBoundingClientRect();return Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)))};
+  const bands=$$('.band'), torch=null, medal=$('#medal'), ticket=$('#ticket');
+  let mx=0,my=0;
+  const onScroll=()=>{if(reduce)return;
+    if(medal){const p=prog(medal.closest('section'));medal.style.setProperty('--ry',((p-.5)*360).toFixed(1)+'deg')}
+    if(ticket){const p=prog(ticket.closest('section'));ticket.style.setProperty('--rx',(26-p*24+my*8).toFixed(1)+'deg');ticket.style.setProperty('--ry',(-24+p*30+mx*10).toFixed(1)+'deg');ticket.style.setProperty('--rz',(-10+p*12).toFixed(1)+'deg')}
+  };
+  // fotografije: narančasta ploha pa slika (kao na naslovnoj)
+  $$('.im').forEach(el=>el.insertAdjacentHTML('beforeend','<span class="cov" aria-hidden="true"></span>'));
+  let pend=$$('.im');
+  const chkIm=()=>{if(!pend.length)return;const lim=innerHeight*.88;pend=pend.filter(c=>{const r=c.getBoundingClientRect();if(r.top<lim&&r.bottom>0){c.classList.add('in');const d=parseFloat(c.style.getPropertyValue('--d'))||0;setTimeout(()=>{c.classList.add('done');c.style.setProperty('--d','0ms')},d+1700);return false}return true})};
+  addEventListener('scroll',chkIm,{passive:true});addEventListener('resize',chkIm);whenReady(chkIm);
+  const halfs=[];
+  const half=()=>{if(reduce)return;const vh=innerHeight;halfs.forEach(el=>{const host=el.closest('.band,.hero');const r=host.getBoundingClientRect();if(r.bottom<-50||r.top>vh+50)return;
+    const v=host.classList.contains('hero')?Math.max(0,-r.top)*.5:-(r.top+r.height/2-vh/2)*.5;el.style.setProperty('--py',v.toFixed(1)+'px')})};
+  let hq=0;addEventListener('scroll',()=>{if(!hq)hq=requestAnimationFrame(()=>{hq=0;half()})},{passive:true});addEventListener('resize',half);half();
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
+  if(ticket){const sec=ticket.closest('section');sec.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=sec.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;onScroll()});sec.addEventListener('pointerleave',()=>{mx=my=0;onScroll()})}
+  // preloader + intro (isti kao na naslovnoj)
+  const intro=$('#intro');
+  const heroIn=()=>$$('.hero .over, .hero .h, .hero .lang, .scrollhint').forEach(el=>el.classList.add('in'));
+  const revealAll=()=>revealQ.splice(0).forEach(f=>f());
+  
+  if(reduce||!intro){intro&&intro.remove();document.body.classList.remove('intro');heroIn();revealAll()}
+  else{
+    scrollTo(0,0);
+    const go=()=>{
+      if(intro.dataset.go||!document.body.contains(intro))return;intro.dataset.go=1;
+      document.body.classList.add('brandwait');document.body.classList.remove('intro');
+      intro.classList.add('go');
+      setTimeout(heroIn,500);
+      setTimeout(()=>{intro.remove();document.body.classList.remove('brandwait');setTimeout(revealAll,250)},1250);
+    };
+    const t0=performance.now(), bar=$('#ibar');
+    const imgs=$$('img').filter(i=>!intro.contains(i));
+    let done=0;const total=imgs.length+1;
+    const tick=()=>{done++;bar.style.transform=`scaleX(${Math.min(1,done/total)})`};
+    const imgReady=imgs.map(i=>i.complete&&i.naturalWidth?(tick(),Promise.resolve()):new Promise(r=>{const f=()=>{tick();r()};i.addEventListener('load',f,{once:true});i.addEventListener('error',f,{once:true})}));
+    const fontsReady=(document.fonts?document.fonts.ready:Promise.resolve()).then(tick);
+    const pageReady=new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r,{once:true}));
+    Promise.all([...imgReady,fontsReady,pageReady]).then(()=>{bar.style.transform='scaleX(1)';setTimeout(go,Math.max(450,1200-(performance.now()-t0)))});
+    setTimeout(go,20000);
+  }
+}
+</script>
+<script src="js/three.min.js"></script>
+<script src="js/GLTFLoader.js"></script>
+<script src="js/RoomEnvironment.js"></script>
+<script src="js/baklja-model.js"></script>
+<script src="js/torch3d.js"></script>
+<script src="js/medal3d.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>
+{% endraw %}

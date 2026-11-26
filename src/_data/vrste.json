@@ -1,0 +1,13 @@
+{
+  "novosti": {
+    "novost": "Novost",
+    "oglas": "Oglas",
+    "nabavka": "Javna nabavka",
+    "akti": "Akti"
+  },
+  "natjecaji": {
+    "zap": "Zapošljavanje",
+    "poziv": "Javni poziv",
+    "zakup": "Zakup prostora"
+  }
+}

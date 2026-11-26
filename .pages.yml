@@ -1,0 +1,133 @@
+# Pages CMS (https://app.pagescms.org) – forme za uređivanje sadržaja zoi84.ba
+media:
+  input: src/uploads
+  output: /uploads
+
+content:
+  - name: novosti
+    label: Novosti i obavijesti
+    type: collection
+    path: src/novosti
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, vrsta]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Naslov, type: string, required: true }
+      - { name: date, label: Datum objave, type: date, required: true }
+      - name: vrsta
+        label: Vrsta objave
+        type: select
+        required: true
+        default: novost
+        options:
+          values:
+            - { value: novost, label: Novost }
+            - { value: oglas, label: Oglas }
+            - { value: nabavka, label: Javna nabavka }
+            - { value: akti, label: Akti }
+      - name: dokumenti
+        label: Prilozi (PDF, Word…)
+        type: object
+        list: true
+        fields:
+          - { name: naziv, label: Naziv priloga, type: string }
+          - { name: fajl, label: Fajl, type: file }
+      - { name: body, label: Tekst objave, type: rich-text, description: "Prvi paragraf se prikazuje kao uvod." }
+
+  - name: natjecaji
+    label: Natječaji i javni pozivi
+    type: collection
+    path: src/natjecaji
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, rok, vrsta]
+      primary: title
+      sort: [date, rok]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Naslov, type: string, required: true }
+      - name: vrsta
+        label: Vrsta
+        type: select
+        required: true
+        default: zap
+        options:
+          values:
+            - { value: zap, label: Zapošljavanje }
+            - { value: poziv, label: Javni poziv }
+            - { value: zakup, label: Zakup prostora }
+      - { name: date, label: Datum objave, type: date, required: true }
+      - { name: rok, label: Rok za prijave, type: date, required: true, description: "Nakon roka natječaj automatski prelazi u Zatvorene." }
+      - { name: sazetak, label: Kratki opis (na kartici), type: text }
+      - name: dokumenti
+        label: Dokumentacija
+        type: object
+        list: true
+        fields:
+          - { name: naziv, label: Naziv dokumenta, type: string }
+          - { name: fajl, label: Fajl, type: file }
+      - { name: body, label: Detaljan tekst (u prozoru „Detaljnije“), type: rich-text }
+
+  - name: dokumenti
+    label: Dokumenti
+    type: collection
+    path: src/dokumenti
+    filename: "{primary}.md"
+    view:
+      fields: [title, kategorija, date]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Naziv dokumenta, type: string, required: true }
+      - name: kategorija
+        label: Kategorija
+        type: select
+        required: true
+        options:
+          values:
+            - { value: akti, label: Statut i opći akti }
+            - { value: odluke, label: Odluke i rješenja }
+            - { value: izvjestaji, label: Izvještaji }
+            - { value: planovi, label: Planovi i programi }
+            - { value: nabavke, label: Javne nabavke }
+            - { value: cjenovnici, label: Cjenovnici }
+            - { value: pristup, label: Pristup informacijama }
+      - { name: date, label: Datum, type: date, required: true }
+      - { name: fajl, label: Fajl, type: file, description: "Vrsta (PDF, DOCX…) i veličina se računaju automatski." }
+
+  - name: ulaganja
+    label: Kapitalna ulaganja (O nama)
+    type: file
+    path: src/_data/ulaganja.json
+    format: json
+    fields:
+      - name: bjelasnica
+        label: OC Bjelašnica – Igman
+        type: object
+        list: true
+        fields:
+          - { name: godina, label: Godina, type: string }
+          - { name: naslov, label: Naslov, type: string }
+          - { name: opis, label: Opis, type: text }
+          - { name: naslov_en, label: Naslov (engleski), type: string }
+          - { name: opis_en, label: Opis (engleski), type: text }
+      - name: zetra
+        label: OC Zetra
+        type: object
+        list: true
+        fields:
+          - { name: godina, label: Godina, type: string }
+          - { name: naslov, label: Naslov, type: string }
+          - { name: opis, label: Opis, type: text }
+          - { name: naslov_en, label: Naslov (engleski), type: string }
+          - { name: opis_en, label: Opis (engleski), type: text }
