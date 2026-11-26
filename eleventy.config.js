@@ -1,5 +1,5 @@
 // Eleventy konfiguracija za zoi84.ba
-// Sadržaj koji uređuje klijent (Pages CMS): src/novosti, src/natjecaji, src/dokumenti, src/_data/ulaganja.json
+// Sadržaj koji uređuje klijent (Pages CMS): src/novosti, src/natjecaji, src/dokumenti, src/ulaganja, src/_data/uprava.json
 import fs from "node:fs";
 import path from "node:path";
 
@@ -92,13 +92,34 @@ export default function (cfg) {
     </section>`;
   }).join(""));
 
-  // --- kapitalna ulaganja (O nama) ---
-  cfg.addFilter("invItems", (items, lang = "bs") => (items || []).map((x, i) => {
-    const h = (lang === "en" && x.naslov_en) || x.naslov;
-    const p = (lang === "en" && x.opis_en) || x.opis || "";
-    const ps = String(p).split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean).join("||");
-    return `      <li${i >= 5 ? ' class="more-i" hidden' : ""}><a class="ki" href="#" data-p="${esc(ps)}"><div class="meta"><span>${lang === "en" ? "INVESTMENT" : "ULAGANJE"}</span>${esc(x.godina)}.</div><h3>${esc(h)}</h3>${AR}</a></li>\n`;
-  }).join(""));
+  // --- kapitalna ulaganja (O nama): kolekcija src/ulaganja, po centru, najnovija godina prva ---
+  cfg.addFilter("invItems", (items, centar, lang = "bs") => (items || [])
+    .filter((i) => i.data.centar === centar)
+    .sort((a, b) => (Number(b.data.godina) || 0) - (Number(a.data.godina) || 0) || (a.data.redoslijed || 99) - (b.data.redoslijed || 99))
+    .map((i, n) => {
+      const x = i.data, h = (lang === "en" && x.title_en) || x.title;
+      const ps = String((lang === "en" && x.opis_en) || x.opis || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean).join("||");
+      return `      <li${n >= 5 ? ' class="more-i" hidden' : ""}><a class="ki" href="#" data-p="${esc(ps)}"><div class="meta"><span>${lang === "en" ? "INVESTMENT" : "ULAGANJE"}</span>${esc(x.godina)}.</div><h3>${esc(h)}</h3>${AR}</a></li>\n`;
+    }).join(""));
+
+  // --- uprava (O nama): src/_data/uprava.json ---
+  const img = (f) => (f ? encodeURI(String(f)) : "");
+  cfg.addFilter("uprDirektor", (u, lang = "bs") => {
+    const d = (u && u.direktor) || {}, en = lang === "en";
+    const fn = (en && d.funkcija_en) || d.funkcija || "";
+    const bio = String((en && d.bio_en) || d.bio || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+    return `  <div class="uhead">
+    <div class="ph">${d.foto ? `<img src="${esc(img(d.foto))}" alt="${esc(d.ime + ", " + fn)}" onerror="this.remove()">` : ""}</div>
+    <div class="ubio">
+      <h3 class="unm">${esc(d.ime || "")}</h3>
+      <small>${esc(fn)}</small>
+${bio.map((p) => `      <p class="bio">${esc(p)}</p>`).join("\n")}
+    </div>
+  </div>
+`;
+  });
+  cfg.addFilter("uprClanovi", (list, lang = "bs") => (list || []).filter((c) => c && c.ime).map((c) =>
+    `      <li><b>${esc(c.ime)}</b><span>${esc((lang === "en" && c.funkcija_en) || c.funkcija || "")}</span></li>\n`).join(""));
 
   // statični fajlovi
   for (const d of ["img", "js", "models", "uploads", "logo-src.svg", ".htaccess", "robots.txt", "_redirects"]) cfg.addPassthroughCopy("src/" + d);

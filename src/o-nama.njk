@@ -445,7 +445,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <div class="cdesc">
     <div class="ctext"><p class="cp">Na Bjelašnici su 1984. održana sva muška takmičenja u alpskom skijanju, a na Igmanu skijaški skokovi i nordijske discipline. Danas su to planine za sve: od rekreativaca i porodica do takmičara na FIS Europa Cupu. Upravljamo stazama, žičarama i olimpijskim objektima i ulažemo u ponudu tokom cijele godine.</p><a class="btn cbtn" href="https://www.ocbjelasnica.com" target="_blank" rel="noopener">Posjetite web <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="offer kul"><h4>Kapitalna ulaganja</h4><ul id="invbj">
-{% endraw %}{{ ulaganja.bjelasnica | invItems("bs") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invbj">Prikaži više</button></div>
+{% endraw %}{{ collections.ulaganja | invItems("bjelasnica", "bs") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invbj">Prikaži više</button></div>
   </div>
 </section>
 
@@ -467,34 +467,15 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <div class="cdesc">
     <div class="ctext"><p class="cp">Zetra je otvorena 1982. kao najveći građevinski projekt sarajevskih Igara, a 1984. bila je dom umjetničkog klizanja i brzog klizanja te ceremonije zatvaranja. Danas kompleks okuplja hiljade posjetilaca na utakmicama, koncertima, sajmovima i rekreaciji na ledu.</p><a class="btn cbtn" href="https://www.oczetra.ba/" target="_blank" rel="noopener">Posjetite web <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="offer kul"><h4>Kapitalna ulaganja</h4><ul id="invze">
-{% endraw %}{{ ulaganja.zetra | invItems("bs") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invze">Prikaži više</button></div>
+{% endraw %}{{ collections.ulaganja | invItems("zetra", "bs") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invze">Prikaži više</button></div>
   </div>
 </section>
 
 <section class="upr" id="uprava">
   <div class="head"><div><p class="over">Uprava</p><h2 class="h">Rukovodstvo</h2></div></div>
-  <div class="uhead">
-    <div class="ph"><img src="img/direktor.jpg" alt="Admir Bukva, direktor KJP ZOI'84" onerror="this.remove()"></div>
-    <div class="ubio">
-      <h3 class="unm">Admir Bukva</h3>
-      <small>Direktor KJP ZOI'84 Olimpijski centar Sarajevo</small>
-      <p class="bio">Ovdje ide kratka biografija direktora: obrazovanje, dosadašnje profesionalno iskustvo i ključni rezultati u upravljanju preduzećem. Dvije do tri rečenice su dovoljne da posjetilac stekne utisak o osobi koja vodi olimpijske objekte Sarajeva.</p>
-      <p class="bio">U drugom paragrafu može se navesti fokus mandata: ulaganja u Bjelašnicu, Igman i Zetru, razvoj ponude tokom cijele godine i transparentan rad javnog preduzeća.</p>
-    </div>
-  </div>
-  <div class="tlist">
+{% endraw %}{{ uprava | uprDirektor("bs") | safe }}{% raw %}  <div class="tlist">
     <ul>
-      <li><b>Ime Prezime</b><span>Izvršni direktor za ekonomsko-finansijske poslove</span></li>
-      <li><b>Ime Prezime</b><span>Izvršni direktor za pravne i opće poslove</span></li>
-      <li><b>Ime Prezime</b><span>Izvršni direktor za tehničke poslove</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac OC Bjelašnica–Igman</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac OC Zetra</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac Ski centra Bjelašnica</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac službe za marketing i prodaju</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac službe za javne nabavke</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac službe za ljudske resurse</span></li>
-      <li><b>Ime Prezime</b><span>Rukovodilac službe održavanja</span></li>
-    </ul>
+{% endraw %}{{ uprava.clanovi | uprClanovi("bs") | safe }}{% raw %}    </ul>
   </div>
 </section>
 

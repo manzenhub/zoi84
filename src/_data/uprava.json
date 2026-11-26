@@ -1,0 +1,62 @@
+{
+  "direktor": {
+    "ime": "Admir Bukva",
+    "funkcija": "Direktor KJP ZOI'84 Olimpijski centar Sarajevo",
+    "funkcija_en": "Director of KJP ZOI'84 Olympic Centre Sarajevo",
+    "foto": "img/direktor.jpg",
+    "bio": "Ovdje ide kratka biografija direktora: obrazovanje, dosadašnje profesionalno iskustvo i ključni rezultati u upravljanju preduzećem. Dvije do tri rečenice su dovoljne da posjetilac stekne utisak o osobi koja vodi olimpijske objekte Sarajeva.\n\nU drugom paragrafu može se navesti fokus mandata: ulaganja u Bjelašnicu, Igman i Zetru, razvoj ponude tokom cijele godine i transparentan rad javnog preduzeća.",
+    "bio_en": "A short biography of the director goes here: education, professional experience and key results in managing the company. Two or three sentences are enough to give visitors an impression of the person leading Sarajevo’s Olympic venues.\n\nThe second paragraph can describe the focus of the mandate: investment in Bjelašnica, Igman and Zetra, a year-round offer and the transparent work of a public company."
+  },
+  "clanovi": [
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Izvršni direktor za ekonomsko-finansijske poslove",
+      "funkcija_en": "Executive Director for Economic and Financial Affairs"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Izvršni direktor za pravne i opće poslove",
+      "funkcija_en": "Executive Director for Legal and General Affairs"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Izvršni direktor za tehničke poslove",
+      "funkcija_en": "Executive Director for Technical Affairs"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac OC Bjelašnica–Igman",
+      "funkcija_en": "Head of OC Bjelašnica–Igman"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac OC Zetra",
+      "funkcija_en": "Head of OC Zetra"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac Ski centra Bjelašnica",
+      "funkcija_en": "Head of Bjelašnica Ski Centre"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac službe za marketing i prodaju",
+      "funkcija_en": "Head of Marketing and Sales"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac službe za javne nabavke",
+      "funkcija_en": "Head of Public Procurement"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac službe za ljudske resurse",
+      "funkcija_en": "Head of Human Resources"
+    },
+    {
+      "ime": "Ime Prezime",
+      "funkcija": "Rukovodilac službe održavanja",
+      "funkcija_en": "Head of Maintenance"
+    }
+  ]
+}

@@ -113,28 +113,54 @@ content:
           - { name: naziv, label: Naziv (neobavezno), type: string }
 
   - name: ulaganja
-    label: Kapitalna ulaganja (O nama)
+    label: Kapitalna ulaganja
+    type: collection
+    path: src/ulaganja
+    filename: "{fields.centar}-{primary}.md"
+    view:
+      fields: [title, centar, godina]
+      primary: title
+      sort: [godina, title]
+      default:
+        sort: godina
+        order: desc
+    fields:
+      - { name: title, label: Naziv projekta, type: string, required: true }
+      - name: centar
+        label: Olimpijski centar
+        type: select
+        required: true
+        options:
+          values:
+            - { value: bjelasnica, label: Bjelašnica – Igman }
+            - { value: zetra, label: Zetra }
+      - { name: godina, label: Godina, type: number, required: true }
+      - { name: opis, label: Opis (u prozoru), type: text, description: "Prazan red između paragrafa pravi novi paragraf." }
+      - { name: title_en, label: Naziv (engleski), type: string }
+      - { name: opis_en, label: Opis (engleski), type: text }
+      - { name: redoslijed, label: Redoslijed unutar iste godine, type: number, description: "Neobavezno. Manji broj ide prvi." }
+
+  - name: uprava
+    label: Uprava
     type: file
-    path: src/_data/ulaganja.json
+    path: src/_data/uprava.json
     format: json
     fields:
-      - name: bjelasnica
-        label: OC Bjelašnica – Igman
+      - name: direktor
+        label: Direktor
+        type: object
+        fields:
+          - { name: ime, label: Ime i prezime, type: string }
+          - { name: funkcija, label: Funkcija, type: string }
+          - { name: funkcija_en, label: Funkcija (engleski), type: string }
+          - { name: foto, label: Fotografija, type: image }
+          - { name: bio, label: Biografija, type: text, description: "Prazan red između paragrafa pravi novi paragraf." }
+          - { name: bio_en, label: Biografija (engleski), type: text }
+      - name: clanovi
+        label: Rukovodstvo (lista ispod direktora)
         type: object
         list: true
         fields:
-          - { name: godina, label: Godina, type: string }
-          - { name: naslov, label: Naslov, type: string }
-          - { name: opis, label: Opis, type: text }
-          - { name: naslov_en, label: Naslov (engleski), type: string }
-          - { name: opis_en, label: Opis (engleski), type: text }
-      - name: zetra
-        label: OC Zetra
-        type: object
-        list: true
-        fields:
-          - { name: godina, label: Godina, type: string }
-          - { name: naslov, label: Naslov, type: string }
-          - { name: opis, label: Opis, type: text }
-          - { name: naslov_en, label: Naslov (engleski), type: string }
-          - { name: opis_en, label: Opis (engleski), type: text }
+          - { name: ime, label: Ime i prezime, type: string }
+          - { name: funkcija, label: Funkcija, type: string }
+          - { name: funkcija_en, label: Funkcija (engleski), type: string }

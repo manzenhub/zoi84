@@ -396,9 +396,6 @@ body.navleave .brand{animation:navOut .45s ease forwards}
     <li><a href="index-en.html">Home</a></li>
     <li><a href="#top" class="on" aria-current="page">About us</a></li>
     <li><a href="nasljedje-en.html">Heritage '84</a></li>
-    <li><a href="novosti.html">News</a></li>
-    <li><a href="dokumenti.html">Documents</a></li>
-    <li><a href="konkursi.html">Tenders</a></li>
   </ul>
   </div>
   <aside><b>CONTACT</b>033 212 035<br>marketing@zoi84.ba<b>ADDRESS</b>Alipašina b.b.<br>71 000 Sarajevo, Bosnia and Herzegovina</aside>
@@ -445,7 +442,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <div class="cdesc">
     <div class="ctext"><p class="cp">In 1984 Bjelašnica hosted all the men’s alpine skiing events, while Igman hosted ski jumping and the Nordic disciplines. Today these are mountains for everyone, from recreational skiers and families to FIS Europa Cup racers. We manage the slopes, lifts and Olympic venues and invest in a year-round offer.</p><a class="btn cbtn" href="https://www.ocbjelasnica.com" target="_blank" rel="noopener">Visit website <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="offer kul"><h4>Capital investments</h4><ul id="invbj">
-{% endraw %}{{ ulaganja.bjelasnica | invItems("en") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invbj">Show more</button></div>
+{% endraw %}{{ collections.ulaganja | invItems("bjelasnica", "en") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invbj">Show more</button></div>
   </div>
 </section>
 
@@ -467,34 +464,15 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <div class="cdesc">
     <div class="ctext"><p class="cp">Zetra opened in 1982 as the largest construction project of the Sarajevo Games, and in 1984 it was home to figure skating, speed skating and the closing ceremony. Today the complex welcomes thousands of visitors to games, concerts, fairs and recreation on ice.</p><a class="btn cbtn" href="https://www.oczetra.ba/" target="_blank" rel="noopener">Visit website <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <div class="offer kul"><h4>Capital investments</h4><ul id="invze">
-{% endraw %}{{ ulaganja.zetra | invItems("en") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invze">Show more</button></div>
+{% endraw %}{{ collections.ulaganja | invItems("zetra", "en") | safe }}{% raw %}      </ul><button class="kmore" type="button" data-t="invze">Show more</button></div>
   </div>
 </section>
 
 <section class="upr" id="uprava">
   <div class="head"><div><p class="over">Management</p><h2 class="h">Leadership</h2></div></div>
-  <div class="uhead">
-    <div class="ph"><img src="img/direktor.jpg" alt="Admir Bukva, director of KJP ZOI'84" onerror="this.remove()"></div>
-    <div class="ubio">
-      <h3 class="unm">Admir Bukva</h3>
-      <small>Director of KJP ZOI'84 Olympic Centre Sarajevo</small>
-      <p class="bio">A short biography of the director goes here: education, professional experience and key results in managing the company. Two or three sentences are enough to give visitors an impression of the person leading Sarajevo’s Olympic venues.</p>
-      <p class="bio">The second paragraph can describe the focus of the mandate: investment in Bjelašnica, Igman and Zetra, a year-round offer and the transparent work of a public company.</p>
-    </div>
-  </div>
-  <div class="tlist">
+{% endraw %}{{ uprava | uprDirektor("en") | safe }}{% raw %}  <div class="tlist">
     <ul>
-      <li><b>Name Surname</b><span>Executive Director for Economic and Financial Affairs</span></li>
-      <li><b>Name Surname</b><span>Executive Director for Legal and General Affairs</span></li>
-      <li><b>Name Surname</b><span>Executive Director for Technical Affairs</span></li>
-      <li><b>Name Surname</b><span>Head of OC Bjelašnica–Igman</span></li>
-      <li><b>Name Surname</b><span>Head of OC Zetra</span></li>
-      <li><b>Name Surname</b><span>Head of Bjelašnica Ski Centre</span></li>
-      <li><b>Name Surname</b><span>Head of Marketing and Sales</span></li>
-      <li><b>Name Surname</b><span>Head of Public Procurement</span></li>
-      <li><b>Name Surname</b><span>Head of Human Resources</span></li>
-      <li><b>Name Surname</b><span>Head of Maintenance</span></li>
-    </ul>
+{% endraw %}{{ uprava.clanovi | uprClanovi("en") | safe }}{% raw %}    </ul>
   </div>
 </section>
 
