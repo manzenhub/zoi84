@@ -270,7 +270,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
 
 /* ================= NOVOSTI ================= */
-.nlist{background:var(--bg2);min-height:100vh;padding:calc(160*var(--u)) calc(128*var(--u) + var(--sx)) calc(150*var(--u))}
+.nlist{background:var(--bg2);min-height:100vh;padding:calc(44*var(--u)) calc(128*var(--u) + var(--sx)) calc(150*var(--u))}
 .nlist .over{margin-bottom:calc(54*var(--u))}
 .nlist .h{font-size:calc(150*var(--u));line-height:.92;margin:0 0 0 calc(-4*var(--u))}
 .nlist .bar{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin:0 0 calc(80*var(--u))}
@@ -324,7 +324,6 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 
 <div class="page" id="top">
 <section class="nlist">
-  <p class="over">Novosti</p>
   <div class="bar">
     <h1 class="h">Novosti i<br>obavijesti</h1>
     <div class="chips" role="group" aria-label="Filtriraj objave">{% endraw %}{{ collections.novosti | newsChips | safe }}{% raw %}</div>
