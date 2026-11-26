@@ -20,7 +20,7 @@ const paras = (item) => {
     .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'")
     .split(/\n\s*\n/).map((p) => p.replace(/\s+/g, " ").replace(/^[#>*-]+\s*/, "").replace(/\*\*|__/g, "").trim()).filter(Boolean);
 };
-const fileUrl = (f) => (f ? (f.startsWith("/") || /^https?:/.test(f) ? f : "/" + f) : "#");
+const fileUrl = (f) => (f ? encodeURI(f.startsWith("/") || /^https?:/.test(f) ? f : "/" + f) : "#");
 const extOf = (f, fallback) => (f ? path.extname(f).slice(1).toUpperCase() : "") || fallback || "PDF";
 const sizeOf = (f, fallback) => {
   if (f && !/^https?:/.test(f)) {
@@ -70,12 +70,20 @@ export default function (cfg) {
 
   // --- dokumenti ---
   const byCat = (items, id) => newest(items).filter((i) => i.data.kategorija === id);
-  cfg.addFilter("docSide", (items, cats) => cats.map((c) => `<li><a href="#${c.id}" data-c="${c.id}">${esc(c.naziv)}<span>${byCat(items, c.id).length}</span></a></li>`).join(""));
+  const nFiles = (list) => list.reduce((n, i) => n + Math.max(1, (i.data.fajlovi || []).filter((f) => f && f.fajl).length), 0);
+  cfg.addFilter("docCount", (items) => nFiles(items || []));
+  cfg.addFilter("docSide", (items, cats) => cats.map((c) => `<li><a href="#${c.id}" data-c="${c.id}">${esc(c.naziv)}<span>${nFiles(byCat(items, c.id))}</span></a></li>`).join(""));
   cfg.addFilter("docYears", (items) => [...new Set((items || []).map((i) => toDate(i.date).getUTCFullYear()))].sort((a, b) => b - a).map((y) => `<option value="${y}">${y}.</option>`).join(""));
   cfg.addFilter("docSections", (items, cats) => cats.map((c) => {
-    const rows = byCat(items, c.id).map((i) => {
-      const d = i.data, typ = extOf(d.fajl, d.tip), size = sizeOf(d.fajl, d.velicina), y = toDate(i.date).getUTCFullYear();
-      return `<li class="doc" data-y="${y}"><a href="${esc(fileUrl(d.fajl))}" data-dl${d.fajl ? ' target="_blank" rel="noopener"' : ""}><span class="ico">${esc(typ)}</span><span class="dt"><b>${esc(d.title)}</b><small>${bsDate(i.date)} · ${esc(typ)}${size ? " · " + esc(size) : ""}</small></span><span class="dlb" aria-hidden="true">${DL}</span></a></li>`;
+    const rows = byCat(items, c.id).flatMap((i) => {
+      const d = i.data, y = toDate(i.date).getUTCFullYear();
+      // jedan unos može imati jedan fajl (fajl) ili više njih (fajlovi) – svaki fajl je zaseban red
+      const files = (d.fajlovi || []).filter((f) => f && f.fajl);
+      const list = files.length ? files.map((f) => ({ naziv: f.naziv || (files.length > 1 ? path.basename(f.fajl).replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ") : d.title), fajl: f.fajl })) : [{ naziv: d.title, fajl: d.fajl, tip: d.tip, velicina: d.velicina }];
+      return list.map((f) => {
+        const typ = extOf(f.fajl, f.tip), size = sizeOf(f.fajl, f.velicina);
+        return `<li class="doc" data-y="${y}"><a href="${esc(fileUrl(f.fajl))}" data-dl${f.fajl ? ' target="_blank" rel="noopener"' : ""}><span class="ico">${esc(typ)}</span><span class="dt"><b>${esc(f.naziv)}</b><small>${bsDate(i.date)} · ${esc(typ)}${size ? " · " + esc(size) : ""}</small></span><span class="dlb" aria-hidden="true">${DL}</span></a></li>`;
+      });
     }).join("");
     return `
     <section class="dsec" id="${c.id}">

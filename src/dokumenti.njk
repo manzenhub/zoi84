@@ -362,7 +362,7 @@ body.navleave .brand{animation:navOut .45s ease forwards}
   <aside class="dside"><h4>Kategorije</h4><ul>{% endraw %}{{ collections.dokumenti | docSide(kategorije) | safe }}{% raw %}</ul></aside>
   <div class="dmain">
     <div class="dtools">
-      <label class="dsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="dq" placeholder="Pretražite {% endraw %}{{ collections.dokumenti.length }}{% raw %} dokumenata" aria-label="Pretraga dokumenata"></label>
+      <label class="dsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="dq" placeholder="Pretražite {% endraw %}{{ collections.dokumenti | docCount }}{% raw %} dokumenata" aria-label="Pretraga dokumenata"></label>
       <select class="dyear" id="dy" aria-label="Godina"><option value="">Sve godine</option>{% endraw %}{{ collections.dokumenti | docYears | safe }}{% raw %}</select>
     </div>{% endraw %}{{ collections.dokumenti | docSections(kategorije) | safe }}{% raw %}
     <p class="dnone" hidden>Nema dokumenata koji odgovaraju pretrazi.</p>

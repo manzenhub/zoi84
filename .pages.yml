@@ -88,7 +88,7 @@ content:
         sort: date
         order: desc
     fields:
-      - { name: title, label: Naziv dokumenta, type: string, required: true }
+      - { name: title, label: Naziv dokumenta / grupe, type: string, required: true }
       - name: kategorija
         label: Kategorija
         type: select
@@ -103,7 +103,14 @@ content:
             - { value: cjenovnici, label: Cjenovnici }
             - { value: pristup, label: Pristup informacijama }
       - { name: date, label: Datum, type: date, required: true }
-      - { name: fajl, label: Fajl, type: file, description: "Vrsta (PDF, DOCX…) i veličina se računaju automatski." }
+      - name: fajlovi
+        label: Fajlovi
+        description: "Možeš dodati više fajlova odjednom. Svaki se prikazuje kao zaseban dokument s istom kategorijom i datumom. Ako nazivu ostaviš prazno, koristi se naslov gore (za jedan fajl) ili ime fajla (za više). Vrsta i veličina se računaju automatski."
+        type: object
+        list: true
+        fields:
+          - { name: fajl, label: Fajl, type: file }
+          - { name: naziv, label: Naziv (neobavezno), type: string }
 
   - name: ulaganja
     label: Kapitalna ulaganja (O nama)
