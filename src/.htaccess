@@ -4,6 +4,7 @@ DirectoryIndex index.html
 AddDefaultCharset UTF-8
 
 # 301 preusmjerenja sa starog WordPress weba dodaju se ovdje prije prelaska na novu stranicu, npr.:
+Redirect 301 /natjecaji.html /konkursi.html
 # Redirect 301 /o-nama/ /o-nama.html
 # Stari PDF-ovi ostaju na istoj adresi: kopirati /wp-content/uploads/ na server.
 

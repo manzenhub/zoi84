@@ -101,7 +101,7 @@ export default function (cfg) {
   }).join(""));
 
   // statični fajlovi
-  for (const d of ["img", "js", "models", "uploads", "logo-src.svg", ".htaccess", "robots.txt"]) cfg.addPassthroughCopy("src/" + d);
+  for (const d of ["img", "js", "models", "uploads", "logo-src.svg", ".htaccess", "robots.txt", "_redirects"]) cfg.addPassthroughCopy("src/" + d);
 
   return { dir: { input: "src", output: "_site" }, templateFormats: ["njk", "md"], markdownTemplateEngine: false };
 }
