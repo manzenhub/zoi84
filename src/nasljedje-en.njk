@@ -670,6 +670,11 @@ body{background:#161616}
 
 /* desktop: banner Naslijeđa 20% viši */
 @media(min-width:901px){.hero.nh{height:72vh!important;min-height:624px}}
+
+/* paralaksa: glavni banner i baneri kategorija (Bjelašnica, Igman, Zetra) */
+.hero.nh .slide{top:0!important;will-change:transform;transform:translate3d(0,var(--px,0px),0)!important;transition:none!important}
+.band img{top:-15%!important;height:130%!important;will-change:transform;transform:translate3d(0,var(--px,0px),0)!important}
+@media(prefers-reduced-motion:reduce){.hero.nh .slide,.band img{transform:none!important}.band img{top:0!important;height:100%!important}}
 </style>
 </head>
 <body class="intro">
@@ -989,7 +994,22 @@ body{background:#161616}
 <script src="js/baklja-model.js"></script>
 <script src="js/torch3d.js"></script>
 <script src="js/medal3d.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="js/smooth.js"></script>
 <script src="js/menu.js"></script>
+<script>
+/* paralaksa banera na Naslijeđu */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var hero=[].slice.call(document.querySelectorAll('.hero.nh .slide')),bands=[].slice.call(document.querySelectorAll('.band > img'));
+  function upd(){var vh=innerHeight;
+    hero.forEach(function(el){var r=el.closest('.hero').getBoundingClientRect();if(r.bottom<0)return;el.style.setProperty('--px',(Math.max(0,-r.top)*.4).toFixed(1)+'px')});
+    bands.forEach(function(el){var r=el.parentNode.getBoundingClientRect();if(r.bottom<-50||r.top>vh+50)return;
+      var v=-(r.top+r.height/2-vh/2)*.15,m=r.height*.15;el.style.setProperty('--px',Math.max(-m,Math.min(m,v)).toFixed(1)+'px')})}
+  var q=0;function tick(){if(!q)q=requestAnimationFrame(function(){q=0;upd()})}
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);upd();
+})();
+</script>
 </body>
 </html>
 {% endraw %}

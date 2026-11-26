@@ -269,6 +269,10 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 @media(max-width:900px){.lb{padding:14px}.lbs{padding:76px 22px 30px}.lbh{padding-right:0}.lbx{top:14px;right:14px;width:46px;height:46px;background:#fff}.lbx:hover{background:var(--bk)}}
 @view-transition{navigation:auto}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+
+/* paralaksa glavnog banera */
+.hero .slide picture{will-change:transform;transform:translate3d(0,var(--px,0px),0)}
+@media(prefers-reduced-motion:reduce){.hero .slide picture{transform:none}}
 </style>
 </head>
 <body class="intro">
@@ -515,7 +519,17 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 <script src="js/three.min.js"></script>
 <script src="js/zoi3d.js"></script>
 <script src="js/lightbox.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="js/smooth.js"></script>
 <script src="js/menu.js"></script>
+<script>
+/* paralaksa glavnog banera: slika se pomiče sporije od stranice */
+(function(){
+  var h=document.querySelector('header.hero');if(!h||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var q=0;function upd(){q=0;var r=h.getBoundingClientRect();if(r.bottom<0)return;h.style.setProperty('--px',(Math.max(0,-r.top)*.4).toFixed(1)+'px')}
+  addEventListener('scroll',function(){if(!q)q=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd();
+})();
+</script>
 </body>
 </html>
 {% endraw %}

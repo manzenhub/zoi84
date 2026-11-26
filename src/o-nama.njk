@@ -372,6 +372,10 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 .org{padding:72px 20px}.org .head{margin-bottom:32px}.ogrid{grid-template-columns:minmax(0,1fr);gap:12px}.ogrid a{min-height:0;padding:24px}.ogrid h3{font-size:22px}
 .cta{grid-template-columns:minmax(0,1fr);gap:28px;padding:80px 20px;background:linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.85)),url(img/kosarka.jpg) center 40%/cover no-repeat #0B0B0B}.hero.on-h .h{font-size:clamp(46px,12.5vw,84px)}.inv .nc .bt{flex-direction:column;align-items:flex-start;gap:6px}.cta .h{font-size:clamp(52px,14vw,96px)}
 }
+
+/* paralaksa glavnog banera */
+.hero .slide picture{will-change:transform;transform:translate3d(0,var(--px,0px),0)}
+@media(prefers-reduced-motion:reduce){.hero .slide picture{transform:none}}
 </style>
 </head>
 <body class="intro">
@@ -620,7 +624,17 @@ body.navleave .brand{animation:navOut .45s ease forwards}
 }
 </script>
 <script src="js/lightbox.js"></script>
+<script src="js/lenis.min.js"></script>
+<script src="js/smooth.js"></script>
 <script src="js/menu.js"></script>
+<script>
+/* paralaksa glavnog banera: slika se pomiče sporije od stranice */
+(function(){
+  var h=document.querySelector('header.hero');if(!h||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var q=0;function upd(){q=0;var r=h.getBoundingClientRect();if(r.bottom<0)return;h.style.setProperty('--px',(Math.max(0,-r.top)*.4).toFixed(1)+'px')}
+  addEventListener('scroll',function(){if(!q)q=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd();
+})();
+</script>
 </body>
 </html>
 {% endraw %}
